@@ -12,6 +12,17 @@
 
 	<jsp:attribute name="body">
 
+        <div class="col-lg-12">
+            <h1 class="page-header">
+                Parcours <small>Mon parcours de formation</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li class="active">
+                    <i class="fa fa-dashboard"></i> Parcours
+                </li>
+            </ol>
+        </div>
+
         <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-green">

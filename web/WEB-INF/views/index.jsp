@@ -13,16 +13,16 @@
 	<jsp:attribute name="body">
         <div class="col-lg-12">
             <h1 class="page-header">
-                Formations <small>Vue globale formation</small>
+                Accueil <small>Bienvenue</small>
             </h1>
             <ol class="breadcrumb">
                 <li class="active">
-                    <i class="fa fa-dashboard"></i> Formations
+                    <i class="fa fa-dashboard"></i> Accueil
                 </li>
             </ol>
         </div>
         <div>
-            <span>Bonjour</span>
+            <span>Bonjour les régaleurs, on pisse du code ?</span>
         </div>
 	</jsp:attribute>
 

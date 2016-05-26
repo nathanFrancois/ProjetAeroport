@@ -76,7 +76,7 @@
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav side-nav">
                         <li class="active">
-                            <a href="<c:url value="/"> </c:url>"><i class="fa fa-fw fa-dashboard"></i> Formations</a>
+                            <a href="<c:url value="/formations"> </c:url>"><i class="fa fa-fw fa-dashboard"></i> Formations</a>
                         </li>
                         <li class="">
                             <a href="<c:url value="/parcours"> </c:url>"><i class="fa fa-fw fa-bar-chart-o"></i> Parcours</a>

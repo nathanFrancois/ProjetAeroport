@@ -1,5 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+             http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+<persistence-unit name="PAeroport">
+    <class>aeroport.metier.Action</class>
+    <class>aeroport.metier.Appartient</class>
+    <class>aeroport.metier.Apprenant</class>
+    <class>aeroport.metier.Calendrier</class>
+    <class>aeroport.metier.EstAssocie</class>
+    <class>aeroport.metier.Fixe</class>
+    <class>aeroport.metier.Indicateur</class>
+    <class>aeroport.metier.Jeu</class>
+    <class>aeroport.metier.Mission</class>
+    <class>aeroport.metier.Objectif</class>
+    <class>aeroport.metier.Obtient</class>
+    <class>aeroport.metier.Possede</class>
+    <class>aeroport.metier.Regle</class>
 
-    <persistence-unit name="NewPersistenceUnit"/>
+    <properties>
+        <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+        <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
+        <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/baseaeroport" />
+        <property name="hibernate.connection.username" value="userepul" />
+        <property name="hibernate.connection.password" value="epul" />
+        <property name="hibernate.show_sql" value="true"/>
+    </properties>
+</persistence-unit>
 </persistence>
