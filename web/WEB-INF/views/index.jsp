@@ -21,6 +21,9 @@
                 </li>
             </ol>
         </div>
+        <div>
+            <span>Bonjour</span>
+        </div>
 	</jsp:attribute>
 
 </t:layout>
