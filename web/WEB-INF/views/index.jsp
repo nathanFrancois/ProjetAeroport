@@ -22,7 +22,7 @@
             </ol>
         </div>
         <div>
-            <span>Bonjour les régaleurs, on pisse du code ?</span>
+            <span>Un logo tout simple</span>
         </div>
 	</jsp:attribute>
 
