@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.IdClass;
 
 /**
- * Created by Nathan on 26/05/2016.
+ * Created by Nathan on 16/06/2016.
  */
 @Entity
 @IdClass(PossedePK.class)

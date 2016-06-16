@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 /**
- * Created by Nathan on 26/05/2016.
+ * Created by Nathan on 16/06/2016.
  */
 @Entity
 public class Regle {

@@ -6,17 +6,35 @@
               		http://www.springframework.org/schema/security
               		http://www.springframework.org/schema/security/spring-security-4.1.xsd">
 
-    <security:http auto-config="true">
-        <security:intercept-url pattern="/**" access="hasRole('ROLE_USER')"/>
+    <bean id="baseaeroport" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <property name="url" value="jdbc:mysql://localhost:3306/baseaeroport" />
+        <property name="username" value="userepul" />
+        <property name="password" value="epul" />
+    </bean>
+
+    <security:http auto-config="true" >
+        <security:intercept-url pattern="/formations" access="hasRole('ROLE_USER')" />
+        <security:intercept-url pattern="/parcours" access="hasRole('ROLE_USER')" />
+        <security:intercept-url pattern="/" access="hasRole('ROLE_USER')" />
+
+
+        <security:form-login login-page="/login"
+                             username-parameter="username"
+                             password-parameter="password"
+                             authentication-failure-url="/login?failure"/>
+        <security:csrf/>
     </security:http>
 
     <security:authentication-manager>
         <security:authentication-provider>
-            <security:user-service>
-                <security:user name="nathan" password="nathan" authorities="ROLE_USER" />
-            </security:user-service>
+            <security:jdbc-user-service
+                    data-source-ref="baseaeroport"
+                    users-by-username-query=
+                            "select username,password, enabled from users where username=?"
+                    authorities-by-username-query=
+                            "select username, role from user_roles where username =?  " />
         </security:authentication-provider>
     </security:authentication-manager>
-
 
 </beans>

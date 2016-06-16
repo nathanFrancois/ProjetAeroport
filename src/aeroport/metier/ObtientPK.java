@@ -6,21 +6,21 @@ import java.io.Serializable;
 import java.sql.Date;
 
 /**
- * Created by Nathan on 26/05/2016.
+ * Created by Nathan on 16/06/2016.
  */
 public class ObtientPK implements Serializable {
-    private Integer numapprenant;
+    private String username;
     private Date datejour;
     private Integer numaction;
 
-    @Column(name = "NUMAPPRENANT")
+    @Column(name = "USERNAME")
     @Id
-    public Integer getNumapprenant() {
-        return numapprenant;
+    public String getUsername() {
+        return username;
     }
 
-    public void setNumapprenant(Integer numapprenant) {
-        this.numapprenant = numapprenant;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     @Column(name = "DATEJOUR")
@@ -50,8 +50,7 @@ public class ObtientPK implements Serializable {
 
         ObtientPK obtientPK = (ObtientPK) o;
 
-        if (numapprenant != null ? !numapprenant.equals(obtientPK.numapprenant) : obtientPK.numapprenant != null)
-            return false;
+        if (username != null ? !username.equals(obtientPK.username) : obtientPK.username != null) return false;
         if (datejour != null ? !datejour.equals(obtientPK.datejour) : obtientPK.datejour != null) return false;
         if (numaction != null ? !numaction.equals(obtientPK.numaction) : obtientPK.numaction != null) return false;
 
@@ -60,7 +59,7 @@ public class ObtientPK implements Serializable {
 
     @Override
     public int hashCode() {
-        int result = numapprenant != null ? numapprenant.hashCode() : 0;
+        int result = username != null ? username.hashCode() : 0;
         result = 31 * result + (datejour != null ? datejour.hashCode() : 0);
         result = 31 * result + (numaction != null ? numaction.hashCode() : 0);
         return result;

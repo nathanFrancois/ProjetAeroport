@@ -5,7 +5,7 @@ import javax.persistence.Id;
 import java.io.Serializable;
 
 /**
- * Created by Nathan on 26/05/2016.
+ * Created by Nathan on 16/06/2016.
  */
 public class PossedePK implements Serializable {
     private Integer numaction;

@@ -3,10 +3,10 @@ package aeroport.metier;
 import javax.persistence.*;
 
 /**
- * Created by Nathan on 26/05/2016.
+ * Created by Nathan on 16/06/2016.
  */
 @Entity
-@Table(name = "EST_ASSOCIE", schema = "baseaeroport", catalog = "")
+@Table(name = "EST_ASSOCIE", schema = "baseaeroport")
 @IdClass(EstAssociePK.class)
 public class EstAssocie {
     private Integer numaction;

@@ -6,11 +6,12 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 /**
- * Created by Nathan on 26/05/2016.
+ * Created by Nathan on 16/06/2016.
  */
 @Entity
 public class Action {
     private Integer numaction;
+    private Integer actNumaction;
     private String libaction;
     private Integer scoremin;
 
@@ -22,6 +23,16 @@ public class Action {
 
     public void setNumaction(Integer numaction) {
         this.numaction = numaction;
+    }
+
+    @Basic
+    @Column(name = "ACT_NUMACTION")
+    public Integer getActNumaction() {
+        return actNumaction;
+    }
+
+    public void setActNumaction(Integer actNumaction) {
+        this.actNumaction = actNumaction;
     }
 
     @Basic
@@ -52,6 +63,8 @@ public class Action {
         Action action = (Action) o;
 
         if (numaction != null ? !numaction.equals(action.numaction) : action.numaction != null) return false;
+        if (actNumaction != null ? !actNumaction.equals(action.actNumaction) : action.actNumaction != null)
+            return false;
         if (libaction != null ? !libaction.equals(action.libaction) : action.libaction != null) return false;
         if (scoremin != null ? !scoremin.equals(action.scoremin) : action.scoremin != null) return false;
 
@@ -61,6 +74,7 @@ public class Action {
     @Override
     public int hashCode() {
         int result = numaction != null ? numaction.hashCode() : 0;
+        result = 31 * result + (actNumaction != null ? actNumaction.hashCode() : 0);
         result = 31 * result + (libaction != null ? libaction.hashCode() : 0);
         result = 31 * result + (scoremin != null ? scoremin.hashCode() : 0);
         return result;

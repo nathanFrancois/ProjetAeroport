@@ -6,7 +6,6 @@
 <persistence-unit name="PAeroport">
     <class>aeroport.metier.Action</class>
     <class>aeroport.metier.Appartient</class>
-    <class>aeroport.metier.Apprenant</class>
     <class>aeroport.metier.Calendrier</class>
     <class>aeroport.metier.EstAssocie</class>
     <class>aeroport.metier.Fixe</class>
@@ -17,6 +16,8 @@
     <class>aeroport.metier.Obtient</class>
     <class>aeroport.metier.Possede</class>
     <class>aeroport.metier.Regle</class>
+    <class>aeroport.metier.Users</class>
+    <class>aeroport.metier.UserRoles</class>
 
     <properties>
         <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />

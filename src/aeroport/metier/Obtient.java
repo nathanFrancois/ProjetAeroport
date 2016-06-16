@@ -4,25 +4,25 @@ import javax.persistence.*;
 import java.sql.Date;
 
 /**
- * Created by Nathan on 26/05/2016.
+ * Created by Nathan on 16/06/2016.
  */
 @Entity
 @IdClass(ObtientPK.class)
 public class Obtient {
-    private Integer numapprenant;
+    private String username;
     private Date datejour;
     private Integer numaction;
     private Integer valeurdebut;
     private Integer valeurfin;
 
     @Id
-    @Column(name = "NUMAPPRENANT")
-    public Integer getNumapprenant() {
-        return numapprenant;
+    @Column(name = "USERNAME")
+    public String getUsername() {
+        return username;
     }
 
-    public void setNumapprenant(Integer numapprenant) {
-        this.numapprenant = numapprenant;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     @Id
@@ -72,8 +72,7 @@ public class Obtient {
 
         Obtient obtient = (Obtient) o;
 
-        if (numapprenant != null ? !numapprenant.equals(obtient.numapprenant) : obtient.numapprenant != null)
-            return false;
+        if (username != null ? !username.equals(obtient.username) : obtient.username != null) return false;
         if (datejour != null ? !datejour.equals(obtient.datejour) : obtient.datejour != null) return false;
         if (numaction != null ? !numaction.equals(obtient.numaction) : obtient.numaction != null) return false;
         if (valeurdebut != null ? !valeurdebut.equals(obtient.valeurdebut) : obtient.valeurdebut != null) return false;
@@ -84,7 +83,7 @@ public class Obtient {
 
     @Override
     public int hashCode() {
-        int result = numapprenant != null ? numapprenant.hashCode() : 0;
+        int result = username != null ? username.hashCode() : 0;
         result = 31 * result + (datejour != null ? datejour.hashCode() : 0);
         result = 31 * result + (numaction != null ? numaction.hashCode() : 0);
         result = 31 * result + (valeurdebut != null ? valeurdebut.hashCode() : 0);

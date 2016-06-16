@@ -6,11 +6,12 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 /**
- * Created by Nathan on 26/05/2016.
+ * Created by Nathan on 16/06/2016.
  */
 @Entity
 public class Indicateur {
     private Integer numindic;
+    private Integer numaction;
     private String libindic;
     private Integer poids;
 
@@ -22,6 +23,16 @@ public class Indicateur {
 
     public void setNumindic(Integer numindic) {
         this.numindic = numindic;
+    }
+
+    @Basic
+    @Column(name = "NUMACTION")
+    public Integer getNumaction() {
+        return numaction;
+    }
+
+    public void setNumaction(Integer numaction) {
+        this.numaction = numaction;
     }
 
     @Basic
@@ -52,6 +63,7 @@ public class Indicateur {
         Indicateur that = (Indicateur) o;
 
         if (numindic != null ? !numindic.equals(that.numindic) : that.numindic != null) return false;
+        if (numaction != null ? !numaction.equals(that.numaction) : that.numaction != null) return false;
         if (libindic != null ? !libindic.equals(that.libindic) : that.libindic != null) return false;
         if (poids != null ? !poids.equals(that.poids) : that.poids != null) return false;
 
@@ -61,6 +73,7 @@ public class Indicateur {
     @Override
     public int hashCode() {
         int result = numindic != null ? numindic.hashCode() : 0;
+        result = 31 * result + (numaction != null ? numaction.hashCode() : 0);
         result = 31 * result + (libindic != null ? libindic.hashCode() : 0);
         result = 31 * result + (poids != null ? poids.hashCode() : 0);
         return result;

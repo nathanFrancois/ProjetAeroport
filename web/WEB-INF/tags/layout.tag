@@ -53,7 +53,7 @@
                 <!-- Menu haut -->
                 <ul class="nav navbar-right top-nav">
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Nathan François <b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> ${pageContext.request.userPrincipal.name} <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="#"><i class="fa fa-fw fa-user"></i> Profil</a>
@@ -66,7 +66,7 @@
                             </li>
                             <li class="divider"></li>
                             <li>
-                                <a href="#"><i class="fa fa-fw fa-power-off"></i> Déconnexion</a>
+                                <a href="<c:url value="/logout">/></c:url>"><i class="fa fa-fw fa-power-off"></i> Déconnexion</a>
                             </li>
                         </ul>
                     </li>
