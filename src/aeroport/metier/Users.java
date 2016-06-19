@@ -1,23 +1,45 @@
 package aeroport.metier;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import com.sun.tools.internal.xjc.reader.xmlschema.bindinfo.BIConversion;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Nathan on 16/06/2016.
  */
 @Entity
 public class Users {
-    private String username;
-    private String nomusers;
-    private String prenomusers;
-    private String password;
-    private Byte enabled;
+
+    public Users(){
+        this.userRolesList = new ArrayList<UserRoles>();
+    }
 
     @Id
     @Column(name = "USERNAME")
+    private String username;
+
+    @Basic
+    @Column(name = "NOMUSERS")
+    private String nomusers;
+
+    @Basic
+    @Column(name = "PRENOMUSERS")
+    private String prenomusers;
+
+    @Basic
+    @Column(name = "PASSWORD")
+    private String password;
+
+    @Basic
+    @Column(name = "ENABLED")
+    private Byte enabled;
+
+    @OneToMany(mappedBy="users", cascade=CascadeType.ALL)
+    private List<UserRoles> userRolesList;
+
+
     public String getUsername() {
         return username;
     }
@@ -26,8 +48,6 @@ public class Users {
         this.username = username;
     }
 
-    @Basic
-    @Column(name = "NOMUSERS")
     public String getNomusers() {
         return nomusers;
     }
@@ -36,8 +56,6 @@ public class Users {
         this.nomusers = nomusers;
     }
 
-    @Basic
-    @Column(name = "PRENOMUSERS")
     public String getPrenomusers() {
         return prenomusers;
     }
@@ -46,8 +64,6 @@ public class Users {
         this.prenomusers = prenomusers;
     }
 
-    @Basic
-    @Column(name = "PASSWORD")
     public String getPassword() {
         return password;
     }
@@ -56,14 +72,26 @@ public class Users {
         this.password = password;
     }
 
-    @Basic
-    @Column(name = "ENABLED")
     public Byte getEnabled() {
         return enabled;
     }
 
     public void setEnabled(Byte enabled) {
         this.enabled = enabled;
+    }
+
+    public List<UserRoles> getUserRolesList() {
+        return userRolesList;
+    }
+
+    public void setUserRolesList(List<UserRoles> userRolesList) {
+        this.userRolesList = userRolesList;
+    }
+
+    public void addUserRoles(UserRoles userRoles) {
+        if(!this.userRolesList.contains(userRoles)){
+            this.userRolesList.add(userRoles);
+        }
     }
 
     @Override

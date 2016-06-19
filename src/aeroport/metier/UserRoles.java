@@ -8,12 +8,22 @@ import javax.persistence.*;
 @Entity
 @Table(name = "USER_ROLES", schema = "baseaeroport")
 public class UserRoles {
-    private Integer userRoleId;
-    private String username;
-    private String role;
 
     @Id
     @Column(name = "USER_ROLE_ID")
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private Integer userRoleId;
+
+
+    @JoinColumn(name = "USERNAME", referencedColumnName = "USERNAME")
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Users users;
+
+    @Basic
+    @Column(name = "ROLE")
+    private String role;
+
+
     public Integer getUserRoleId() {
         return userRoleId;
     }
@@ -22,18 +32,16 @@ public class UserRoles {
         this.userRoleId = userRoleId;
     }
 
-    @Basic
-    @Column(name = "USERNAME")
-    public String getUsername() {
-        return username;
+
+    public Users getUsers() {
+        return users;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUsers(Users users) {
+        this.users = users;
     }
 
-    @Basic
-    @Column(name = "ROLE")
+
     public String getRole() {
         return role;
     }
@@ -50,7 +58,7 @@ public class UserRoles {
         UserRoles userRoles = (UserRoles) o;
 
         if (userRoleId != null ? !userRoleId.equals(userRoles.userRoleId) : userRoles.userRoleId != null) return false;
-        if (username != null ? !username.equals(userRoles.username) : userRoles.username != null) return false;
+        if (users != null ? !users.equals(userRoles.users) : userRoles.users != null) return false;
         if (role != null ? !role.equals(userRoles.role) : userRoles.role != null) return false;
 
         return true;
@@ -59,7 +67,7 @@ public class UserRoles {
     @Override
     public int hashCode() {
         int result = userRoleId != null ? userRoleId.hashCode() : 0;
-        result = 31 * result + (username != null ? username.hashCode() : 0);
+        result = 31 * result + (users != null ? users.hashCode() : 0);
         result = 31 * result + (role != null ? role.hashCode() : 0);
         return result;
     }

@@ -81,6 +81,9 @@
                         <li class="">
                             <a href="<c:url value="/parcours"> </c:url>"><i class="fa fa-fw fa-bar-chart-o"></i> Parcours</a>
                         </li>
+                        <li class="">
+                            <a href="<c:url value="/apprenants"> </c:url>"><i class="fa fa-fw fa-user"></i> Apprenants</a>
+                        </li>
                     </ul>
                 </div>
             </nav>

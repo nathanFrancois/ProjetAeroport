@@ -3,12 +3,8 @@ package aeroport.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import aeroport.service.JeuService;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 
@@ -21,19 +17,6 @@ public class IndexController extends MultiActionController {
         return new ModelAndView("index");
     }
 
-    @RequestMapping(value = "/login")
-    public ModelAndView login(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        return new ModelAndView("login");
-    }
-
-    @RequestMapping(value="/logout", method = RequestMethod.GET)
-    public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if (auth != null){
-            new SecurityContextLogoutHandler().logout(request, response, auth);
-        }
-        return "redirect:/login";
-    }
 
     @RequestMapping(value = "/formations")
     public ModelAndView formations(HttpServletRequest request, HttpServletResponse response) throws Exception {

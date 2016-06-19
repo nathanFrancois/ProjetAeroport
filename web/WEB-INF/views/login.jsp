@@ -30,10 +30,15 @@
                     <input type="password" class="form-control" id="password" name="password"/>
                 </div>
 
-                <button type="submit">Log in</button>
+                <button type="submit">Log in</button><br /><br />
 
                 <input type="hidden" name="${_csrf.parameterName}"   value="${_csrf.token}" />
             </form>
+
+            <a href="<c:url value="/register"> </c:url>">
+                <button> Demander un compte </button>
+            </a>
+
         </div>
     </body>
 </html>
