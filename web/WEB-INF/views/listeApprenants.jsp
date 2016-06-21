@@ -42,10 +42,13 @@
                                 <td>${apprenant.username}</td>
                                 <td>
                                 <c:if test="${!apprenant.enabled}">
-                                    <a href="<c:url value="/apprenants/enabled/${apprenant.idusers}">/></c:url>">
-                                        <button type="button" class="btn btn-default">Valider le compte</button>
+                                    <a href="<c:url value="/apprenants/valider/${apprenant.idusers}">/></c:url>">
+                                        <i class="fa fa-check" aria-hidden="true"></i>
                                     </a>
                                 </c:if>
+                                    <a href="<c:url value="/apprenants/supprimer/${apprenant.idusers}">/></c:url>">
+                                        <i class="fa fa-times" aria-hidden="true"></i>
+                                    </a>
                                 </td>
                             </tr>
                         </c:forEach>

@@ -50,7 +50,8 @@ public class UserService extends EntityService {
         System.out.println("BONJOUIUGKJHKHK");
     }
 
-    public void supprimerApprenant(Users users) {
+    public void supprimerApprenant(int id) {
+        supprimer(Users.class, id);
     }
 
     public List<String> getAllUsername() {
