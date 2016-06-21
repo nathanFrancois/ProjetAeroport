@@ -42,7 +42,7 @@
                                 <td>${apprenant.username}</td>
                                 <td>
                                 <c:if test="${!apprenant.enabled}">
-                                    <a href="<c:url value="/apprenants/enabled/${apprenant.username}">/></c:url>">
+                                    <a href="<c:url value="/apprenants/enabled/${apprenant.idusers}">/></c:url>">
                                         <button type="button" class="btn btn-default">Valider le compte</button>
                                     </a>
                                 </c:if>

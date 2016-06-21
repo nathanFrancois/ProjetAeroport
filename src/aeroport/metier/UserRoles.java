@@ -15,7 +15,7 @@ public class UserRoles {
     private Integer userRoleId;
 
 
-    @JoinColumn(name = "USERNAME", referencedColumnName = "USERNAME")
+    @JoinColumn(name = "USER_ID", referencedColumnName = "IDUSERS")
     @ManyToOne(fetch = FetchType.EAGER)
     private Users users;
 

@@ -15,6 +15,10 @@ public class Users {
     }
 
     @Id
+    @Column(name = "IDUSERS")
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private Integer idusers;
+
     @Column(name = "USERNAME")
     private String username;
 
@@ -37,6 +41,13 @@ public class Users {
     @OneToMany(mappedBy="users", cascade=CascadeType.ALL)
     private List<UserRoles> userRolesList;
 
+    public Integer getIdusers() {
+        return idusers;
+    }
+
+    public void setIdusers(Integer idusers) {
+        this.idusers = idusers;
+    }
 
     public String getUsername() {
         return username;

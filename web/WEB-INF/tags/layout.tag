@@ -80,19 +80,19 @@
                 <!-- Menu coté -->
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav side-nav">
-                        <security:authorize access="hasRole('ROLE_USER')">
-                            <li class="active">
-                                <a href="<c:url value="/formations"> </c:url>"><i class="fa fa-fw fa-dashboard"></i> Formations</a>
-                            </li>
-                            <li class="">
-                                <a href="<c:url value="/parcours"> </c:url>"><i class="fa fa-fw fa-bar-chart-o"></i> Parcours</a>
-                            </li>
-                        </security:authorize>
-                        <security:authorize access="hasRole('ROLE_ADMIN')">
-                            <li class="">
-                                <a href="<c:url value="/apprenants"> </c:url>"><i class="fa fa-user"></i> Apprenants</a>
-                            </li>
-                        </security:authorize>
+                    <security:authorize access="hasRole('ROLE_USER')">
+                        <li class="active">
+                            <a href="<c:url value="/formations"> </c:url>"><i class="fa fa-fw fa-dashboard"></i> Formations</a>
+                        </li>
+                        <li class="">
+                            <a href="<c:url value="/parcours"> </c:url>"><i class="fa fa-fw fa-bar-chart-o"></i> Parcours</a>
+                        </li>
+                    </security:authorize>
+                    <security:authorize access="hasRole('ROLE_ADMIN')">
+                        <li class="">
+                            <a href="<c:url value="/apprenants"> </c:url>"><i class="fa fa-user"></i> Apprenants</a>
+                        </li>
+                    </security:authorize>
                     </ul>
                 </div>
             </nav>

@@ -23,11 +23,11 @@ public class ApprenantController extends MultiActionController {
         return new ModelAndView("listeApprenants");
     }
 
-    @RequestMapping(value = "/apprenants/enabled/{username}")
-    public ModelAndView enabledApprenant(HttpServletRequest request, HttpServletResponse response, @PathVariable("username") String username) throws Exception {
+    @RequestMapping(value = "/apprenants/enabled/{id}")
+    public ModelAndView enabledApprenant(HttpServletRequest request, HttpServletResponse response, @PathVariable("id") int id) throws Exception {
 
         UserService userService = new UserService();
-        Users users = userService.trouverUsers(username);
+        Users users = userService.trouverUsers(id);
         userService.validerCompte(users);
 
         return new ModelAndView("redirect:/apprenants");

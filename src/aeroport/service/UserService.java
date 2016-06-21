@@ -25,17 +25,9 @@ public class UserService extends EntityService {
         return listApprenants;
     }
 
-    public Users trouverUsers(String username) {
-
-        EntityTransaction transaction = startTransaction();
-        transaction.begin();
-        Users users = entityManager.find(Users.class, username);
-        entityManager.close();
-        entityManagerFactory.close();
-
-        return users;
+    public Users trouverUsers(int id) {
+        return (Users)trouver(Users.class, id);
     }
-
 
     public void ajouterApprenants(Users users) {
 
@@ -46,7 +38,6 @@ public class UserService extends EntityService {
         users.setEnabled(new Byte("0"));
         inserer(users);
     }
-
 
     public void validerCompte(Users users) {
         EntityTransaction transaction = startTransaction();
@@ -59,6 +50,8 @@ public class UserService extends EntityService {
         System.out.println("BONJOUIUGKJHKHK");
     }
 
+    public void supprimerApprenant(Users users) {
+    }
 
     public List<String> getAllUsername() {
 

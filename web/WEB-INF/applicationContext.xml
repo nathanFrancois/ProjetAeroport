@@ -32,9 +32,9 @@
             <security:jdbc-user-service
                     data-source-ref="baseaeroport"
                     users-by-username-query=
-                            "select username,password, enabled from users where username=?"
+                            "select username,password, enabled, NOMUSERS, PRENOMUSERS from users where username=?"
                     authorities-by-username-query=
-                            "select username, role from user_roles where username =?  " />
+                            "select username, role from user_roles ur, users u where  ur.USER_ID = u.IDUSERS AND username =?  " />
         </security:authentication-provider>
     </security:authentication-manager>
 
