@@ -29,7 +29,6 @@ public class UserController extends MultiActionController {
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public ModelAndView registerForm(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-
         RegisterForm form = new RegisterForm();
         form.ajouterApprenant(request);
 

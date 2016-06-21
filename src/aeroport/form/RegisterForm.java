@@ -66,10 +66,10 @@ public class RegisterForm {
             UserService userService = new UserService();
             userService.ajouterApprenants(apprenant);
 
-            resultat = "Succès de l'ajout de l'adherent.";
+            resultat = "Succès";
 
         } else {
-            resultat = "Échec de l'ajout.";
+            resultat = "Votre de demande de compte a échoué";
         }
 
         return apprenant;

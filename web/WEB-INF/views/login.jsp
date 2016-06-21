@@ -30,7 +30,7 @@
                     <input type="password" class="form-control" id="password" name="password"/>
                 </div>
 
-                <button type="submit">Log in</button><br /><br />
+                <button type="submit">Se connecter</button><br /><br />
 
                 <input type="hidden" name="${_csrf.parameterName}"   value="${_csrf.token}" />
             </form>

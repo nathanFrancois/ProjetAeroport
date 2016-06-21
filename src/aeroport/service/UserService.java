@@ -2,15 +2,14 @@ package aeroport.service;
 
 import aeroport.metier.UserRoles;
 import aeroport.metier.Users;
-
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Nathan on 17/06/2016.
- */
+
 public class UserService extends EntityService {
 
     public List<Users> trouverToutApprenants() {
@@ -26,6 +25,18 @@ public class UserService extends EntityService {
         return listApprenants;
     }
 
+    public Users trouverUsers(String username) {
+
+        EntityTransaction transaction = startTransaction();
+        transaction.begin();
+        Users users = entityManager.find(Users.class, username);
+        entityManager.close();
+        entityManagerFactory.close();
+
+        return users;
+    }
+
+
     public void ajouterApprenants(Users users) {
 
         UserRoles userRoles = new UserRoles();
@@ -35,6 +46,19 @@ public class UserService extends EntityService {
         users.setEnabled(new Byte("0"));
         inserer(users);
     }
+
+
+    public void validerCompte(Users users) {
+        EntityTransaction transaction = startTransaction();
+        transaction.begin();
+        users.setEnabled(new Byte("1"));
+        entityManager.merge(users);
+        entityManager.flush();
+        transaction.commit();
+        entityManager.close();
+        System.out.println("BONJOUIUGKJHKHK");
+    }
+
 
     public List<String> getAllUsername() {
 

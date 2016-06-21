@@ -1,5 +1,6 @@
 <%@tag description="Overall Page template" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
 <%@attribute name="headTitle" fragment="true" %>
 <%@attribute name="header" fragment="true" %>
 <%@attribute name="footer" fragment="true" %>
@@ -27,6 +28,10 @@
         <script src="<%=request.getContextPath()%>/ressources/js/bootstrap.js"></script>
         <script src="<%=request.getContextPath()%>/ressources/js/bootstrap.min.js"></script>
         <script src="<%=request.getContextPath()%>/ressources/js/jquery.js"></script>
+        <script src="<%=request.getContextPath()%>/ressources/js/customTable.js"></script>
+        <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
+        <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>
+
 
         <title>
             <jsp:invoke fragment="headTitle"/>
@@ -53,7 +58,7 @@
                 <!-- Menu haut -->
                 <ul class="nav navbar-right top-nav">
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> ${pageContext.request.userPrincipal.name} <b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>  ${pageContext.request.userPrincipal.name} <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="#"><i class="fa fa-fw fa-user"></i> Profil</a>
@@ -75,15 +80,19 @@
                 <!-- Menu coté -->
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav side-nav">
-                        <li class="active">
-                            <a href="<c:url value="/formations"> </c:url>"><i class="fa fa-fw fa-dashboard"></i> Formations</a>
-                        </li>
-                        <li class="">
-                            <a href="<c:url value="/parcours"> </c:url>"><i class="fa fa-fw fa-bar-chart-o"></i> Parcours</a>
-                        </li>
-                        <li class="">
-                            <a href="<c:url value="/apprenants"> </c:url>"><i class="fa fa-fw fa-user"></i> Apprenants</a>
-                        </li>
+                        <security:authorize access="hasRole('ROLE_USER')">
+                            <li class="active">
+                                <a href="<c:url value="/formations"> </c:url>"><i class="fa fa-fw fa-dashboard"></i> Formations</a>
+                            </li>
+                            <li class="">
+                                <a href="<c:url value="/parcours"> </c:url>"><i class="fa fa-fw fa-bar-chart-o"></i> Parcours</a>
+                            </li>
+                        </security:authorize>
+                        <security:authorize access="hasRole('ROLE_ADMIN')">
+                            <li class="">
+                                <a href="<c:url value="/apprenants"> </c:url>"><i class="fa fa-user"></i> Apprenants</a>
+                            </li>
+                        </security:authorize>
                     </ul>
                 </div>
             </nav>

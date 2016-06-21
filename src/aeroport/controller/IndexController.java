@@ -14,7 +14,7 @@ public class IndexController extends MultiActionController {
 
     @RequestMapping(value = "/")
     public ModelAndView index(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        return new ModelAndView("index");
+        return new ModelAndView("accueil");
     }
 
 

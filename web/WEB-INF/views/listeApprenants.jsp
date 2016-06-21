@@ -25,18 +25,28 @@
             <div class="col-lg-12">
                 <h2>Liste des apprenants</h2>
                 <div class="table-responsive">
-                    <table class="table table-hover">
+                    <table id="tabProjet" class="table table-hover">
                         <thead>
-                        <tr>
-                            <th>Prenom</th>
-                            <th>Nom</th>
-                        </tr>
+                            <tr>
+                                <th>Prenom</th>
+                                <th>Nom</th>
+                                <th>Username</th>
+                                <th>Action</th>
+                            </tr>
                         </thead>
                         <tbody>
                         <c:forEach items="${requestScope.apprenants}" var="apprenant">
                             <tr>
                                 <td>${apprenant.prenomusers}</td>
                                 <td>${apprenant.nomusers}</td>
+                                <td>${apprenant.username}</td>
+                                <td>
+                                <c:if test="${!apprenant.enabled}">
+                                    <a href="<c:url value="/apprenants/enabled/${apprenant.username}">/></c:url>">
+                                        <button type="button" class="btn btn-default">Valider le compte</button>
+                                    </a>
+                                </c:if>
+                                </td>
                             </tr>
                         </c:forEach>
                         </tbody>

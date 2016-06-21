@@ -1,6 +1,7 @@
 package aeroport.metier;
 
 import com.sun.tools.internal.xjc.reader.xmlschema.bindinfo.BIConversion;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -72,8 +73,9 @@ public class Users {
         this.password = password;
     }
 
-    public Byte getEnabled() {
-        return enabled;
+    public Boolean getEnabled() {
+        Byte monByte = new Byte("0");
+        return !enabled.equals(monByte);
     }
 
     public void setEnabled(Byte enabled) {
