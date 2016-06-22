@@ -20,11 +20,17 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="alert alert-danger">
-                    <i class="fa fa-list-alt" aria-hidden="true"></i>
-                    <b>Mes jeux en cours </b>
+                    <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                    <b>Mes jeux en cours</b>
+
+                    <button type="button" class="btn btn-primary btn-sm">
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                        S'inscrire à un jeu
+                    </button>
                 </div>
             </div>
         </div>
+
 
         <div class="row">
             <c:forEach items="${requestScope.inscriptions}" var="inscription" varStatus="counter">

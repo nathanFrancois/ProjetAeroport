@@ -98,6 +98,7 @@
             </nav>
 
             <div id="page-wrapper">
+                <div id="fond"></div>
                 <jsp:invoke fragment="body"/>
             </div>
         </div>
