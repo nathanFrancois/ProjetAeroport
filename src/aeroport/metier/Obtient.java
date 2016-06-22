@@ -4,29 +4,29 @@ import javax.persistence.*;
 import java.sql.Date;
 
 /**
- * Created by Nathan on 16/06/2016.
+ * Created by Nathan on 22/06/2016.
  */
 @Entity
 @IdClass(ObtientPK.class)
 public class Obtient {
-    private String username;
+    private int idusers;
     private Date datejour;
-    private Integer numaction;
+    private int numaction;
     private Integer valeurdebut;
     private Integer valeurfin;
 
     @Id
-    @Column(name = "USERNAME")
-    public String getUsername() {
-        return username;
+    @Column(name = "IDUSERS", nullable = false)
+    public int getIdusers() {
+        return idusers;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setIdusers(int idusers) {
+        this.idusers = idusers;
     }
 
     @Id
-    @Column(name = "DATEJOUR")
+    @Column(name = "DATEJOUR", nullable = false)
     public Date getDatejour() {
         return datejour;
     }
@@ -36,17 +36,17 @@ public class Obtient {
     }
 
     @Id
-    @Column(name = "NUMACTION")
-    public Integer getNumaction() {
+    @Column(name = "NUMACTION", nullable = false)
+    public int getNumaction() {
         return numaction;
     }
 
-    public void setNumaction(Integer numaction) {
+    public void setNumaction(int numaction) {
         this.numaction = numaction;
     }
 
     @Basic
-    @Column(name = "VALEURDEBUT")
+    @Column(name = "VALEURDEBUT", nullable = true)
     public Integer getValeurdebut() {
         return valeurdebut;
     }
@@ -56,7 +56,7 @@ public class Obtient {
     }
 
     @Basic
-    @Column(name = "VALEURFIN")
+    @Column(name = "VALEURFIN", nullable = true)
     public Integer getValeurfin() {
         return valeurfin;
     }
@@ -72,9 +72,9 @@ public class Obtient {
 
         Obtient obtient = (Obtient) o;
 
-        if (username != null ? !username.equals(obtient.username) : obtient.username != null) return false;
+        if (idusers != obtient.idusers) return false;
+        if (numaction != obtient.numaction) return false;
         if (datejour != null ? !datejour.equals(obtient.datejour) : obtient.datejour != null) return false;
-        if (numaction != null ? !numaction.equals(obtient.numaction) : obtient.numaction != null) return false;
         if (valeurdebut != null ? !valeurdebut.equals(obtient.valeurdebut) : obtient.valeurdebut != null) return false;
         if (valeurfin != null ? !valeurfin.equals(obtient.valeurfin) : obtient.valeurfin != null) return false;
 
@@ -83,9 +83,9 @@ public class Obtient {
 
     @Override
     public int hashCode() {
-        int result = username != null ? username.hashCode() : 0;
+        int result = idusers;
         result = 31 * result + (datejour != null ? datejour.hashCode() : 0);
-        result = 31 * result + (numaction != null ? numaction.hashCode() : 0);
+        result = 31 * result + numaction;
         result = 31 * result + (valeurdebut != null ? valeurdebut.hashCode() : 0);
         result = 31 * result + (valeurfin != null ? valeurfin.hashCode() : 0);
         return result;

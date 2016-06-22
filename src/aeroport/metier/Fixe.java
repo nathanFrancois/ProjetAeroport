@@ -6,31 +6,31 @@ import javax.persistence.Id;
 import javax.persistence.IdClass;
 
 /**
- * Created by Nathan on 16/06/2016.
+ * Created by Nathan on 22/06/2016.
  */
 @Entity
 @IdClass(FixePK.class)
 public class Fixe {
-    private Integer nummission;
-    private Integer numobjectif;
+    private int nummission;
+    private int numobjectif;
 
     @Id
-    @Column(name = "NUMMISSION")
-    public Integer getNummission() {
+    @Column(name = "NUMMISSION", nullable = false)
+    public int getNummission() {
         return nummission;
     }
 
-    public void setNummission(Integer nummission) {
+    public void setNummission(int nummission) {
         this.nummission = nummission;
     }
 
     @Id
-    @Column(name = "NUMOBJECTIF")
-    public Integer getNumobjectif() {
+    @Column(name = "NUMOBJECTIF", nullable = false)
+    public int getNumobjectif() {
         return numobjectif;
     }
 
-    public void setNumobjectif(Integer numobjectif) {
+    public void setNumobjectif(int numobjectif) {
         this.numobjectif = numobjectif;
     }
 
@@ -41,16 +41,16 @@ public class Fixe {
 
         Fixe fixe = (Fixe) o;
 
-        if (nummission != null ? !nummission.equals(fixe.nummission) : fixe.nummission != null) return false;
-        if (numobjectif != null ? !numobjectif.equals(fixe.numobjectif) : fixe.numobjectif != null) return false;
+        if (nummission != fixe.nummission) return false;
+        if (numobjectif != fixe.numobjectif) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = nummission != null ? nummission.hashCode() : 0;
-        result = 31 * result + (numobjectif != null ? numobjectif.hashCode() : 0);
+        int result = nummission;
+        result = 31 * result + numobjectif;
         return result;
     }
 }

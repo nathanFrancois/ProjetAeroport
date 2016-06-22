@@ -6,14 +6,14 @@ import javax.persistence.Id;
 import java.sql.Date;
 
 /**
- * Created by Nathan on 16/06/2016.
+ * Created by Nathan on 22/06/2016.
  */
 @Entity
 public class Calendrier {
     private Date datejour;
 
     @Id
-    @Column(name = "DATEJOUR")
+    @Column(name = "DATEJOUR", nullable = false)
     public Date getDatejour() {
         return datejour;
     }

@@ -2,8 +2,7 @@ package aeroport.service;
 
 import aeroport.metier.UserRoles;
 import aeroport.metier.Users;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 import java.util.ArrayList;

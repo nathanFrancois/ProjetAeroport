@@ -6,24 +6,24 @@ import java.io.Serializable;
 import java.sql.Date;
 
 /**
- * Created by Nathan on 16/06/2016.
+ * Created by Nathan on 22/06/2016.
  */
 public class ObtientPK implements Serializable {
-    private String username;
+    private int idusers;
     private Date datejour;
-    private Integer numaction;
+    private int numaction;
 
-    @Column(name = "USERNAME")
+    @Column(name = "IDUSERS", nullable = false)
     @Id
-    public String getUsername() {
-        return username;
+    public int getIdusers() {
+        return idusers;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setIdusers(int idusers) {
+        this.idusers = idusers;
     }
 
-    @Column(name = "DATEJOUR")
+    @Column(name = "DATEJOUR", nullable = false)
     @Id
     public Date getDatejour() {
         return datejour;
@@ -33,13 +33,13 @@ public class ObtientPK implements Serializable {
         this.datejour = datejour;
     }
 
-    @Column(name = "NUMACTION")
+    @Column(name = "NUMACTION", nullable = false)
     @Id
-    public Integer getNumaction() {
+    public int getNumaction() {
         return numaction;
     }
 
-    public void setNumaction(Integer numaction) {
+    public void setNumaction(int numaction) {
         this.numaction = numaction;
     }
 
@@ -50,18 +50,18 @@ public class ObtientPK implements Serializable {
 
         ObtientPK obtientPK = (ObtientPK) o;
 
-        if (username != null ? !username.equals(obtientPK.username) : obtientPK.username != null) return false;
+        if (idusers != obtientPK.idusers) return false;
+        if (numaction != obtientPK.numaction) return false;
         if (datejour != null ? !datejour.equals(obtientPK.datejour) : obtientPK.datejour != null) return false;
-        if (numaction != null ? !numaction.equals(obtientPK.numaction) : obtientPK.numaction != null) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = username != null ? username.hashCode() : 0;
+        int result = idusers;
         result = 31 * result + (datejour != null ? datejour.hashCode() : 0);
-        result = 31 * result + (numaction != null ? numaction.hashCode() : 0);
+        result = 31 * result + numaction;
         return result;
     }
 }

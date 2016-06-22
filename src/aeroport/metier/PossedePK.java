@@ -5,29 +5,29 @@ import javax.persistence.Id;
 import java.io.Serializable;
 
 /**
- * Created by Nathan on 16/06/2016.
+ * Created by Nathan on 22/06/2016.
  */
 public class PossedePK implements Serializable {
-    private Integer numaction;
-    private Integer numregle;
+    private int numaction;
+    private int numregle;
 
-    @Column(name = "NUMACTION")
+    @Column(name = "NUMACTION", nullable = false)
     @Id
-    public Integer getNumaction() {
+    public int getNumaction() {
         return numaction;
     }
 
-    public void setNumaction(Integer numaction) {
+    public void setNumaction(int numaction) {
         this.numaction = numaction;
     }
 
-    @Column(name = "NUMREGLE")
+    @Column(name = "NUMREGLE", nullable = false)
     @Id
-    public Integer getNumregle() {
+    public int getNumregle() {
         return numregle;
     }
 
-    public void setNumregle(Integer numregle) {
+    public void setNumregle(int numregle) {
         this.numregle = numregle;
     }
 
@@ -38,16 +38,16 @@ public class PossedePK implements Serializable {
 
         PossedePK possedePK = (PossedePK) o;
 
-        if (numaction != null ? !numaction.equals(possedePK.numaction) : possedePK.numaction != null) return false;
-        if (numregle != null ? !numregle.equals(possedePK.numregle) : possedePK.numregle != null) return false;
+        if (numaction != possedePK.numaction) return false;
+        if (numregle != possedePK.numregle) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = numaction != null ? numaction.hashCode() : 0;
-        result = 31 * result + (numregle != null ? numregle.hashCode() : 0);
+        int result = numaction;
+        result = 31 * result + numregle;
         return result;
     }
 }

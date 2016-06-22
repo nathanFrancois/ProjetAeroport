@@ -6,31 +6,31 @@ import javax.persistence.Id;
 import javax.persistence.IdClass;
 
 /**
- * Created by Nathan on 16/06/2016.
+ * Created by Nathan on 22/06/2016.
  */
 @Entity
 @IdClass(PossedePK.class)
 public class Possede {
-    private Integer numaction;
-    private Integer numregle;
+    private int numaction;
+    private int numregle;
 
     @Id
-    @Column(name = "NUMACTION")
-    public Integer getNumaction() {
+    @Column(name = "NUMACTION", nullable = false)
+    public int getNumaction() {
         return numaction;
     }
 
-    public void setNumaction(Integer numaction) {
+    public void setNumaction(int numaction) {
         this.numaction = numaction;
     }
 
     @Id
-    @Column(name = "NUMREGLE")
-    public Integer getNumregle() {
+    @Column(name = "NUMREGLE", nullable = false)
+    public int getNumregle() {
         return numregle;
     }
 
-    public void setNumregle(Integer numregle) {
+    public void setNumregle(int numregle) {
         this.numregle = numregle;
     }
 
@@ -41,16 +41,16 @@ public class Possede {
 
         Possede possede = (Possede) o;
 
-        if (numaction != null ? !numaction.equals(possede.numaction) : possede.numaction != null) return false;
-        if (numregle != null ? !numregle.equals(possede.numregle) : possede.numregle != null) return false;
+        if (numaction != possede.numaction) return false;
+        if (numregle != possede.numregle) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = numaction != null ? numaction.hashCode() : 0;
-        result = 31 * result + (numregle != null ? numregle.hashCode() : 0);
+        int result = numaction;
+        result = 31 * result + numregle;
         return result;
     }
 }

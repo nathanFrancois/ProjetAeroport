@@ -6,37 +6,37 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 /**
- * Created by Nathan on 16/06/2016.
+ * Created by Nathan on 22/06/2016.
  */
 @Entity
 public class Indicateur {
-    private Integer numindic;
-    private Integer numaction;
+    private int numindic;
+    private int numaction;
     private String libindic;
     private Integer poids;
 
     @Id
-    @Column(name = "NUMINDIC")
-    public Integer getNumindic() {
+    @Column(name = "NUMINDIC", nullable = false)
+    public int getNumindic() {
         return numindic;
     }
 
-    public void setNumindic(Integer numindic) {
+    public void setNumindic(int numindic) {
         this.numindic = numindic;
     }
 
     @Basic
-    @Column(name = "NUMACTION")
-    public Integer getNumaction() {
+    @Column(name = "NUMACTION", nullable = false)
+    public int getNumaction() {
         return numaction;
     }
 
-    public void setNumaction(Integer numaction) {
+    public void setNumaction(int numaction) {
         this.numaction = numaction;
     }
 
     @Basic
-    @Column(name = "LIBINDIC")
+    @Column(name = "LIBINDIC", nullable = true, length = 20)
     public String getLibindic() {
         return libindic;
     }
@@ -46,7 +46,7 @@ public class Indicateur {
     }
 
     @Basic
-    @Column(name = "POIDS")
+    @Column(name = "POIDS", nullable = true)
     public Integer getPoids() {
         return poids;
     }
@@ -62,8 +62,8 @@ public class Indicateur {
 
         Indicateur that = (Indicateur) o;
 
-        if (numindic != null ? !numindic.equals(that.numindic) : that.numindic != null) return false;
-        if (numaction != null ? !numaction.equals(that.numaction) : that.numaction != null) return false;
+        if (numindic != that.numindic) return false;
+        if (numaction != that.numaction) return false;
         if (libindic != null ? !libindic.equals(that.libindic) : that.libindic != null) return false;
         if (poids != null ? !poids.equals(that.poids) : that.poids != null) return false;
 
@@ -72,8 +72,8 @@ public class Indicateur {
 
     @Override
     public int hashCode() {
-        int result = numindic != null ? numindic.hashCode() : 0;
-        result = 31 * result + (numaction != null ? numaction.hashCode() : 0);
+        int result = numindic;
+        result = 31 * result + numaction;
         result = 31 * result + (libindic != null ? libindic.hashCode() : 0);
         result = 31 * result + (poids != null ? poids.hashCode() : 0);
         return result;

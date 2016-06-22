@@ -6,27 +6,27 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 /**
- * Created by Nathan on 16/06/2016.
+ * Created by Nathan on 22/06/2016.
  */
 @Entity
 public class Action {
-    private Integer numaction;
+    private int numaction;
     private Integer actNumaction;
     private String libaction;
     private Integer scoremin;
 
     @Id
-    @Column(name = "NUMACTION")
-    public Integer getNumaction() {
+    @Column(name = "NUMACTION", nullable = false)
+    public int getNumaction() {
         return numaction;
     }
 
-    public void setNumaction(Integer numaction) {
+    public void setNumaction(int numaction) {
         this.numaction = numaction;
     }
 
     @Basic
-    @Column(name = "ACT_NUMACTION")
+    @Column(name = "ACT_NUMACTION", nullable = true)
     public Integer getActNumaction() {
         return actNumaction;
     }
@@ -36,7 +36,7 @@ public class Action {
     }
 
     @Basic
-    @Column(name = "LIBACTION")
+    @Column(name = "LIBACTION", nullable = true, length = 25)
     public String getLibaction() {
         return libaction;
     }
@@ -46,7 +46,7 @@ public class Action {
     }
 
     @Basic
-    @Column(name = "SCOREMIN")
+    @Column(name = "SCOREMIN", nullable = true)
     public Integer getScoremin() {
         return scoremin;
     }
@@ -62,7 +62,7 @@ public class Action {
 
         Action action = (Action) o;
 
-        if (numaction != null ? !numaction.equals(action.numaction) : action.numaction != null) return false;
+        if (numaction != action.numaction) return false;
         if (actNumaction != null ? !actNumaction.equals(action.actNumaction) : action.actNumaction != null)
             return false;
         if (libaction != null ? !libaction.equals(action.libaction) : action.libaction != null) return false;
@@ -73,7 +73,7 @@ public class Action {
 
     @Override
     public int hashCode() {
-        int result = numaction != null ? numaction.hashCode() : 0;
+        int result = numaction;
         result = 31 * result + (actNumaction != null ? actNumaction.hashCode() : 0);
         result = 31 * result + (libaction != null ? libaction.hashCode() : 0);
         result = 31 * result + (scoremin != null ? scoremin.hashCode() : 0);

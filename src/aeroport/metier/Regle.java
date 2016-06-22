@@ -6,26 +6,26 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 /**
- * Created by Nathan on 16/06/2016.
+ * Created by Nathan on 22/06/2016.
  */
 @Entity
 public class Regle {
-    private Integer numregle;
+    private int numregle;
     private String libregle;
     private Integer scoremin;
 
     @Id
-    @Column(name = "NUMREGLE")
-    public Integer getNumregle() {
+    @Column(name = "NUMREGLE", nullable = false)
+    public int getNumregle() {
         return numregle;
     }
 
-    public void setNumregle(Integer numregle) {
+    public void setNumregle(int numregle) {
         this.numregle = numregle;
     }
 
     @Basic
-    @Column(name = "LIBREGLE")
+    @Column(name = "LIBREGLE", nullable = true, length = 25)
     public String getLibregle() {
         return libregle;
     }
@@ -35,7 +35,7 @@ public class Regle {
     }
 
     @Basic
-    @Column(name = "SCOREMIN")
+    @Column(name = "SCOREMIN", nullable = true)
     public Integer getScoremin() {
         return scoremin;
     }
@@ -51,7 +51,7 @@ public class Regle {
 
         Regle regle = (Regle) o;
 
-        if (numregle != null ? !numregle.equals(regle.numregle) : regle.numregle != null) return false;
+        if (numregle != regle.numregle) return false;
         if (libregle != null ? !libregle.equals(regle.libregle) : regle.libregle != null) return false;
         if (scoremin != null ? !scoremin.equals(regle.scoremin) : regle.scoremin != null) return false;
 
@@ -60,7 +60,7 @@ public class Regle {
 
     @Override
     public int hashCode() {
-        int result = numregle != null ? numregle.hashCode() : 0;
+        int result = numregle;
         result = 31 * result + (libregle != null ? libregle.hashCode() : 0);
         result = 31 * result + (scoremin != null ? scoremin.hashCode() : 0);
         return result;

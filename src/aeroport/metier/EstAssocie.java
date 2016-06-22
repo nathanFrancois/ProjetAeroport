@@ -3,32 +3,32 @@ package aeroport.metier;
 import javax.persistence.*;
 
 /**
- * Created by Nathan on 16/06/2016.
+ * Created by Nathan on 22/06/2016.
  */
 @Entity
 @Table(name = "EST_ASSOCIE", schema = "baseaeroport")
 @IdClass(EstAssociePK.class)
 public class EstAssocie {
-    private Integer numaction;
-    private Integer numobjectif;
+    private int numaction;
+    private int numobjectif;
 
     @Id
-    @Column(name = "NUMACTION")
-    public Integer getNumaction() {
+    @Column(name = "NUMACTION", nullable = false)
+    public int getNumaction() {
         return numaction;
     }
 
-    public void setNumaction(Integer numaction) {
+    public void setNumaction(int numaction) {
         this.numaction = numaction;
     }
 
     @Id
-    @Column(name = "NUMOBJECTIF")
-    public Integer getNumobjectif() {
+    @Column(name = "NUMOBJECTIF", nullable = false)
+    public int getNumobjectif() {
         return numobjectif;
     }
 
-    public void setNumobjectif(Integer numobjectif) {
+    public void setNumobjectif(int numobjectif) {
         this.numobjectif = numobjectif;
     }
 
@@ -39,16 +39,16 @@ public class EstAssocie {
 
         EstAssocie that = (EstAssocie) o;
 
-        if (numaction != null ? !numaction.equals(that.numaction) : that.numaction != null) return false;
-        if (numobjectif != null ? !numobjectif.equals(that.numobjectif) : that.numobjectif != null) return false;
+        if (numaction != that.numaction) return false;
+        if (numobjectif != that.numobjectif) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = numaction != null ? numaction.hashCode() : 0;
-        result = 31 * result + (numobjectif != null ? numobjectif.hashCode() : 0);
+        int result = numaction;
+        result = 31 * result + numobjectif;
         return result;
     }
 }

@@ -1,17 +1,18 @@
 package aeroport.metier;
 
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 
 /**
  * Created by Nathan on 22/06/2016.
  */
 @Entity
-public class Jeu {
+@IdClass(InscriptionPK.class)
+public class Inscription {
     private int numjeu;
-    private String libellejeu;
+    private int numapprenant;
 
     @Id
     @Column(name = "NUMJEU", nullable = false)
@@ -23,14 +24,14 @@ public class Jeu {
         this.numjeu = numjeu;
     }
 
-    @Basic
-    @Column(name = "LIBELLEJEU", nullable = true, length = 25)
-    public String getLibellejeu() {
-        return libellejeu;
+    @Id
+    @Column(name = "NUMAPPRENANT", nullable = false)
+    public int getNumapprenant() {
+        return numapprenant;
     }
 
-    public void setLibellejeu(String libellejeu) {
-        this.libellejeu = libellejeu;
+    public void setNumapprenant(int numapprenant) {
+        this.numapprenant = numapprenant;
     }
 
     @Override
@@ -38,10 +39,10 @@ public class Jeu {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Jeu jeu = (Jeu) o;
+        Inscription that = (Inscription) o;
 
-        if (numjeu != jeu.numjeu) return false;
-        if (libellejeu != null ? !libellejeu.equals(jeu.libellejeu) : jeu.libellejeu != null) return false;
+        if (numjeu != that.numjeu) return false;
+        if (numapprenant != that.numapprenant) return false;
 
         return true;
     }
@@ -49,7 +50,7 @@ public class Jeu {
     @Override
     public int hashCode() {
         int result = numjeu;
-        result = 31 * result + (libellejeu != null ? libellejeu.hashCode() : 0);
+        result = 31 * result + numapprenant;
         return result;
     }
 }

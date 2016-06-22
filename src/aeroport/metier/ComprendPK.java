@@ -1,20 +1,18 @@
 package aeroport.metier;
 
-import javax.persistence.Basic;
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 /**
  * Created by Nathan on 22/06/2016.
  */
-@Entity
-public class Jeu {
+public class ComprendPK implements Serializable {
     private int numjeu;
-    private String libellejeu;
+    private int nummission;
 
-    @Id
     @Column(name = "NUMJEU", nullable = false)
+    @Id
     public int getNumjeu() {
         return numjeu;
     }
@@ -23,14 +21,14 @@ public class Jeu {
         this.numjeu = numjeu;
     }
 
-    @Basic
-    @Column(name = "LIBELLEJEU", nullable = true, length = 25)
-    public String getLibellejeu() {
-        return libellejeu;
+    @Column(name = "NUMMISSION", nullable = false)
+    @Id
+    public int getNummission() {
+        return nummission;
     }
 
-    public void setLibellejeu(String libellejeu) {
-        this.libellejeu = libellejeu;
+    public void setNummission(int nummission) {
+        this.nummission = nummission;
     }
 
     @Override
@@ -38,10 +36,10 @@ public class Jeu {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Jeu jeu = (Jeu) o;
+        ComprendPK that = (ComprendPK) o;
 
-        if (numjeu != jeu.numjeu) return false;
-        if (libellejeu != null ? !libellejeu.equals(jeu.libellejeu) : jeu.libellejeu != null) return false;
+        if (numjeu != that.numjeu) return false;
+        if (nummission != that.nummission) return false;
 
         return true;
     }
@@ -49,7 +47,7 @@ public class Jeu {
     @Override
     public int hashCode() {
         int result = numjeu;
-        result = 31 * result + (libellejeu != null ? libellejeu.hashCode() : 0);
+        result = 31 * result + nummission;
         return result;
     }
 }

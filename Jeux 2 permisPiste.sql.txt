@@ -45,13 +45,13 @@ create table ACTION
 );
 
 /*==============================================================*/
-/* Table : APPARTIENT                                           */
+/* Table : COMPREND                                           */
 /*==============================================================*/
-create table APPARTIENT
+create table COMPREND
 (
    NUMJEU               int not null,
-   NUMACTION            int not null,
-   primary key (NUMJEU, NUMACTION)
+   NUMMISSION            int not null,
+   primary key (NUMJEU, NUMMISSION)
 );
 
 /*==============================================================*/
@@ -148,6 +148,7 @@ create table MISSION
 create table OBJECTIF
 (
    NUMOBJECTIF          int not null,
+   NUMMISSION           int,
    LIBOBECTIF           char(25),
    primary key (NUMOBJECTIF)
 );
@@ -186,14 +187,26 @@ create table REGLE
    primary key (NUMREGLE)
 );
 
+
+/*==============================================================*/
+/* Table : INSCRIPTION                                          */
+/*==============================================================*/
+create table INSCRIPTION
+(
+   NUMJEU               int not null,
+   NUMAPPRENANT         int not null,
+   primary key (NUMJEU, NUMAPPRENANT)
+);
+
+
 alter table ACTION add constraint FK_A_POUR_SUCCESSEUR foreign key (ACT_NUMACTION)
       references ACTION (NUMACTION) on delete restrict on update restrict;
 
-alter table APPARTIENT add constraint FK_APPARTIENT foreign key (NUMJEU)
+alter table COMPREND add constraint FK_COMPREND foreign key (NUMJEU)
       references JEU (NUMJEU) on delete restrict on update restrict;
 
-alter table APPARTIENT add constraint FK_APPARTIENT2 foreign key (NUMACTION)
-      references ACTION (NUMACTION) on delete restrict on update restrict;
+alter table COMPREND add constraint FK_COMPREND2 foreign key (NUMMISSION)
+      references MISSION (NUMMISSION) on delete restrict on update restrict;
 
 alter table EST_ASSOCIE add constraint FK_EST_ASSOCIE foreign key (NUMACTION)
       references ACTION (NUMACTION) on delete restrict on update restrict;
@@ -210,6 +223,9 @@ alter table FIXE add constraint FK_FIXE2 foreign key (NUMOBJECTIF)
 alter table INDICATEUR add constraint FK_EST_VALORISE foreign key (NUMACTION)
       references ACTION (NUMACTION) on delete restrict on update restrict;
 
+alter table OBJECTIF add constraint FK_OBJECTIF foreign key (NUMMISSION)
+      references MISSION (NUMMISSION) on delete restrict on update restrict;
+
 alter table OBTIENT add constraint FK_OBTIENT foreign key (IDUSERS)
       references USERS (IDUSERS) on delete restrict on update restrict;
 
@@ -225,3 +241,8 @@ alter table POSSEDE add constraint FK_POSSEDE foreign key (NUMACTION)
 alter table POSSEDE add constraint FK_POSSEDE2 foreign key (NUMREGLE)
       references REGLE (NUMREGLE) on delete restrict on update restrict;
 
+alter table INSCRIPTION add constraint FK_INSCRIPTION foreign key (NUMJEU)
+      references JEU (NUMJEU) on delete restrict on update restrict;
+
+alter table INSCRIPTION add constraint FK_INSCRIPTION2 foreign key (NUMAPPRENANT)
+      references USERS (IDUSERS) on delete restrict on update restrict;
