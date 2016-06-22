@@ -12,6 +12,7 @@ public class Users {
 
     public Users(){
         this.userRolesList = new ArrayList<UserRoles>();
+        this.inscriptions = new ArrayList<Inscription>();
     }
 
     @Id
@@ -40,6 +41,17 @@ public class Users {
 
     @OneToMany(mappedBy="users", cascade=CascadeType.ALL)
     private List<UserRoles> userRolesList;
+
+    @OneToMany(mappedBy="apprenant", cascade=CascadeType.ALL)
+    private List<Inscription> inscriptions;
+
+    public List<Inscription> getInscriptions() {
+        return inscriptions;
+    }
+
+    public void setInscriptions(List<Inscription> inscriptions) {
+        this.inscriptions = inscriptions;
+    }
 
     public Integer getIdusers() {
         return idusers;

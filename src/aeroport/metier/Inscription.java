@@ -1,9 +1,7 @@
 package aeroport.metier;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
+import javax.persistence.*;
+import java.sql.Date;
 
 /**
  * Created by Nathan on 22/06/2016.
@@ -11,27 +9,44 @@ import javax.persistence.IdClass;
 @Entity
 @IdClass(InscriptionPK.class)
 public class Inscription {
-    private int numjeu;
-    private int numapprenant;
 
     @Id
-    @Column(name = "NUMJEU", nullable = false)
-    public int getNumjeu() {
-        return numjeu;
-    }
+    @JoinColumn(name = "NUMJEU", referencedColumnName = "NUMJEU")
+    @ManyToOne(targetEntity=Jeu.class, fetch = FetchType.EAGER)
+    private Jeu jeu;
 
-    public void setNumjeu(int numjeu) {
-        this.numjeu = numjeu;
-    }
 
     @Id
-    @Column(name = "NUMAPPRENANT", nullable = false)
-    public int getNumapprenant() {
-        return numapprenant;
+    @JoinColumn(name = "NUMAPPRENANT", referencedColumnName = "IDUSERS")
+    @ManyToOne(targetEntity=Users.class, fetch = FetchType.EAGER)
+    private Users apprenant;
+
+    @Basic
+    @Column(name = "DATEINSCRIPTION", nullable = false)
+    private Date dateInscription;
+
+    public Date getDateInscription() {
+        return dateInscription;
     }
 
-    public void setNumapprenant(int numapprenant) {
-        this.numapprenant = numapprenant;
+    public void setDateInscription(Date dateInscription) {
+        this.dateInscription = dateInscription;
+    }
+
+    public Users getApprenant() {
+        return apprenant;
+    }
+
+    public void setApprenant(Users apprenant) {
+        this.apprenant = apprenant;
+    }
+
+    public Jeu getJeu() {
+        return jeu;
+    }
+
+    public void setJeu(Jeu jeu) {
+        this.jeu = jeu;
     }
 
     @Override
@@ -41,16 +56,15 @@ public class Inscription {
 
         Inscription that = (Inscription) o;
 
-        if (numjeu != that.numjeu) return false;
-        if (numapprenant != that.numapprenant) return false;
+        if (jeu != that.jeu) return false;
+        return apprenant != null ? apprenant.equals(that.apprenant) : that.apprenant == null;
 
-        return true;
     }
 
     @Override
     public int hashCode() {
-        int result = numjeu;
-        result = 31 * result + numapprenant;
+        int result = jeu.getNumjeu();
+        result = 31 * result + (apprenant != null ? apprenant.hashCode() : 0);
         return result;
     }
 }

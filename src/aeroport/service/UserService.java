@@ -2,6 +2,8 @@ package aeroport.service;
 
 import aeroport.metier.UserRoles;
 import aeroport.metier.Users;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
@@ -26,6 +28,18 @@ public class UserService extends EntityService {
 
     public Users trouverUsers(int id) {
         return (Users)trouver(Users.class, id);
+    }
+
+    public Users trouverUsersAvecUsername(String username) {
+        EntityTransaction transaction = startTransaction();
+        transaction.begin();
+        Query query = entityManager.createQuery("SELECT u FROM Users u WHERE u.username = :username");
+        query.setParameter("username", username);
+        Users users = (Users) query.getSingleResult();
+        entityManager.close();
+        entityManagerFactory.close();
+
+        return users;
     }
 
     public void ajouterApprenants(Users users) {
@@ -63,4 +77,13 @@ public class UserService extends EntityService {
         }
         return listUsername;
     }
+
+    public Users getCurrentUser() {
+
+        String username = ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
+        return trouverUsersAvecUsername(username);
+    }
+
+
+
 }

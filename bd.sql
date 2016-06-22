@@ -195,6 +195,7 @@ create table INSCRIPTION
 (
    NUMJEU               int not null,
    NUMAPPRENANT         int not null,
+   DATEINSCRIPTION      date not null,
    primary key (NUMJEU, NUMAPPRENANT)
 );
 

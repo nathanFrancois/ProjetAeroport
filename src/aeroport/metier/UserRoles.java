@@ -16,7 +16,7 @@ public class UserRoles {
 
 
     @JoinColumn(name = "USER_ID", referencedColumnName = "IDUSERS")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(targetEntity=Users.class, fetch = FetchType.EAGER)
     private Users users;
 
     @Basic

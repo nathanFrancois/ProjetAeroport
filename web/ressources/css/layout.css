@@ -1,0 +1,15 @@
+.alert-danger {
+    color: #ffffff;
+    background-color: #bebebe;
+    border-color: #BCE8F1;
+}
+
+.alert-danger b {
+    letter-spacing: 3px;
+    font-family: 'Exo', sans-serif;
+    font-weight: 100;
+}
+
+#page-wrapper{
+    min-height: 600px;
+}

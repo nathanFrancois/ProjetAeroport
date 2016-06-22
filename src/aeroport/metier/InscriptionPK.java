@@ -1,34 +1,38 @@
 package aeroport.metier;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
  * Created by Nathan on 22/06/2016.
  */
 public class InscriptionPK implements Serializable {
-    private int numjeu;
-    private int numapprenant;
 
-    @Column(name = "NUMJEU", nullable = false)
     @Id
-    public int getNumjeu() {
-        return numjeu;
-    }
+    @JoinColumn(name = "NUMJEU", referencedColumnName = "NUMJEU")
+    @ManyToOne(targetEntity=Jeu.class, fetch = FetchType.EAGER)
+    private Jeu jeu;
 
-    public void setNumjeu(int numjeu) {
-        this.numjeu = numjeu;
-    }
-
-    @Column(name = "NUMAPPRENANT", nullable = false)
     @Id
-    public int getNumapprenant() {
-        return numapprenant;
+    @JoinColumn(name = "NUMAPPRENANT", referencedColumnName = "IDUSERS")
+    @ManyToOne(targetEntity=Users.class, fetch = FetchType.EAGER)
+    private Users apprenant;
+
+
+    public Jeu getJeu() {
+        return jeu;
     }
 
-    public void setNumapprenant(int numapprenant) {
-        this.numapprenant = numapprenant;
+    public void setJeu(Jeu jeu) {
+        this.jeu = jeu;
+    }
+
+    public Users getApprenant() {
+        return apprenant;
+    }
+
+    public void setApprenant(Users apprenant) {
+        this.apprenant = apprenant;
     }
 
     @Override
@@ -38,16 +42,16 @@ public class InscriptionPK implements Serializable {
 
         InscriptionPK that = (InscriptionPK) o;
 
-        if (numjeu != that.numjeu) return false;
-        if (numapprenant != that.numapprenant) return false;
+        if (jeu != that.jeu) return false;
+        if (apprenant != that.apprenant) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = numjeu;
-        result = 31 * result + numapprenant;
+        int result = jeu.getNumjeu();
+        result = 31 * result + apprenant.getIdusers();
         return result;
     }
 }

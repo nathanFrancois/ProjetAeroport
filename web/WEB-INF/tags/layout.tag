@@ -52,7 +52,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="<c:url value="/"> </c:url>">Aeroport du turfu</a>
+                    <a class="navbar-brand" href="<c:url value="/"> </c:url>">Aeroport de Nice</a>
                 </div>
 
                 <!-- Menu haut -->
@@ -67,7 +67,7 @@
                                 <a href="#"><i class="fa fa-fw fa-envelope"></i> Messagerie</a>
                             </li>
                             <li>
-                                <a href="#"><i class="fa fa-fw fa-gear"></i> Pramètres</a>
+                                <a href="#"><i class="fa fa-fw fa-gear"></i> Paramètres</a>
                             </li>
                             <li class="divider"></li>
                             <li>
