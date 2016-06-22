@@ -19,6 +19,7 @@ body{
 	background-image: url(http://www.babymeetstheworld.com/wp-content/uploads/2015/10/noticia9515h.jpg);
 	background-size: cover;
 	-webkit-filter: blur(5px);
+	filter: blur(5px);
 	z-index: 0;
 }
 
