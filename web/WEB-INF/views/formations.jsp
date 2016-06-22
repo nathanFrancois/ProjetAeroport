@@ -36,7 +36,7 @@
                         <c:set var="color" value="alert-info" />
                     </c:otherwise>
                 </c:choose>
-                <a href="<c:url value="/register"> </c:url>">
+                <a href="#">
                     <div class="col-lg-3">
                         <div class="alert ${color} text-center">
                             <i class="fa fa-briefcase fa-2x" aria-hidden="true"></i>&nbsp;<b>${inscription.jeu.libellejeu} </b>
