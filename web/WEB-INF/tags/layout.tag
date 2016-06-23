@@ -82,7 +82,7 @@
                     <ul class="nav navbar-nav side-nav">
                     <security:authorize access="hasRole('ROLE_USER')">
                         <li class="active">
-                            <a href="<c:url value="/formations"> </c:url>"><i class="fa fa-fw fa-dashboard"></i> Formations</a>
+                            <a href="<c:url value="/formations"> </c:url>"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Formations</a>
                         </li>
                         <li class="">
                             <a href="<c:url value="/parcours"> </c:url>"><i class="fa fa-fw fa-bar-chart-o"></i> Parcours</a>

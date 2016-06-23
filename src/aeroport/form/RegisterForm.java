@@ -42,21 +42,21 @@ public class RegisterForm {
 
         try {
             validationPrenom(prenom);
-        } catch ( Exception e ) {
+        } catch (Exception e) {
             setErreur( CHAMP_PRENOM, e.getMessage());
         }
         apprenant.setPrenomusers(prenom);
 
         try {
             validationUsername(username);
-        } catch ( Exception e ) {
+        } catch (Exception e) {
             setErreur(CHAMP_USERNAME, e.getMessage());
         }
         apprenant.setUsername(username);
 
         try {
             validationPassword(password);
-        } catch ( Exception e ) {
+        } catch (Exception e) {
             setErreur(CHAMP_PASSWORD, e.getMessage());
         }
         apprenant.setPassword(password);

@@ -15,6 +15,11 @@
             <h1 class="page-header">
                 Formations <small>Vue globale formation</small>
             </h1>
+            <ol class="breadcrumb">
+                <li class="active">
+                    Accueil / Formation
+                </li>
+            </ol>
         </div>
 
         <div class="row">
@@ -23,10 +28,14 @@
                     <i class="fa fa-graduation-cap" aria-hidden="true"></i>
                     <b>Mes jeux en cours</b>
 
-                    <button type="button" class="btn btn-primary btn-sm">
-                        <i class="fa fa-pencil" aria-hidden="true"></i>
-                        S'inscrire à un jeu
-                    </button>
+
+                    <a href="<c:url value="/formations/inscription"> </c:url>">
+                        <button type="button" class="btn btn-primary btn-sm">
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                            S'inscrire à un jeu
+                        </button>
+                    </a>
+
                 </div>
             </div>
         </div>

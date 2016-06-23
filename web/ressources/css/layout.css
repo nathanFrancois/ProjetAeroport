@@ -8,10 +8,11 @@
     letter-spacing: 3px;
     font-family: 'Exo', sans-serif;
     font-weight: 100;
+    padding-right: 10%;
 }
 
 #page-wrapper{
-    min-height: 600px;
+    min-height: 90vh;
 }
 
 #fond{
@@ -24,7 +25,9 @@
     height: auto;
     background-image: url(http://img0.gtsstatic.com/wallpapers/df7d09ed27c7599e80998378d97fa332_large.jpeg);
     background-size: cover;
-    -webkit-filter: blur(5px);
-    filter: blur(5px);
     z-index: 0;
+}
+
+.customForm {
+    padding-left: 3%;
 }
