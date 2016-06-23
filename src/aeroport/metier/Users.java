@@ -95,6 +95,9 @@ public class Users {
 
     public Boolean getEnabled() {
         Byte monByte = new Byte("0");
+        if (enabled == null) {
+            return Boolean.FALSE;
+        }
         return !enabled.equals(monByte);
     }
 

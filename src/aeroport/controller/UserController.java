@@ -1,6 +1,8 @@
 package aeroport.controller;
 
+import aeroport.form.ProfilForm;
 import aeroport.form.RegisterForm;
+import aeroport.service.UserService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
@@ -53,5 +55,27 @@ public class UserController extends MultiActionController {
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
         return "redirect:/login";
+    }
+
+    @RequestMapping(value = "/profil")
+    public ModelAndView profil(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        UserService userService = new UserService();
+
+        request.setAttribute("user", userService.getCurrentUser());
+
+        return new ModelAndView("profil");
+    }
+
+    @RequestMapping(value = "/profil", method = RequestMethod.POST)
+    public ModelAndView profilForm(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        ProfilForm profilForm = new ProfilForm();
+        profilForm.updateUsers(request);
+
+        request.setAttribute(ATT_FORM, profilForm);
+
+        UserService userService = new UserService();
+        request.setAttribute("user", userService.getCurrentUser());
+
+        return new ModelAndView("redirect:/");
     }
 }

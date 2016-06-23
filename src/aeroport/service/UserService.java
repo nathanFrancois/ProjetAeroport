@@ -43,7 +43,6 @@ public class UserService extends EntityService {
     }
 
     public void ajouterApprenants(Users users) {
-
         UserRoles userRoles = new UserRoles();
         userRoles.setRole("ROLE_USER");
         userRoles.setUsers(users);
@@ -60,7 +59,6 @@ public class UserService extends EntityService {
         entityManager.flush();
         transaction.commit();
         entityManager.close();
-        System.out.println("BONJOUIUGKJHKHK");
     }
 
     public void supprimerApprenant(int id) {
@@ -68,7 +66,6 @@ public class UserService extends EntityService {
     }
 
     public List<String> getAllUsername() {
-
         List<Users> usersList= (List<Users>) trouverTout("Users");
         List<String> listUsername = new ArrayList<String>();
 
@@ -79,11 +76,21 @@ public class UserService extends EntityService {
     }
 
     public Users getCurrentUser() {
-
         String username = ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
         return trouverUsersAvecUsername(username);
     }
 
-
-
+    public void updateUsers(Users users) {
+        Users currentUsers = getCurrentUser();
+        EntityTransaction transaction = startTransaction();
+        transaction.begin();
+        currentUsers.setNomusers(users.getNomusers());
+        currentUsers.setPrenomusers(users.getPrenomusers());
+        currentUsers.setPassword(users.getPassword());
+        entityManager.merge(currentUsers);
+        entityManager.flush();
+        transaction.commit();
+        entityManager.close();
+    }
 }
+
