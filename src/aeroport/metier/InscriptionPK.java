@@ -15,7 +15,7 @@ public class InscriptionPK implements Serializable {
 
     @Id
     @JoinColumn(name = "NUMAPPRENANT", referencedColumnName = "IDUSERS")
-    @ManyToOne(targetEntity=Users.class, fetch = FetchType.EAGER)
+    @ManyToOne(targetEntity=Users.class, fetch = FetchType.LAZY)
     private Users apprenant;
 
 
