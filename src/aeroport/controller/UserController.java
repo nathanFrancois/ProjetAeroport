@@ -76,6 +76,6 @@ public class UserController extends MultiActionController {
         UserService userService = new UserService();
         request.setAttribute("user", userService.getCurrentUser());
 
-        return new ModelAndView("redirect:/");
+        return new ModelAndView("/profil");
     }
 }
