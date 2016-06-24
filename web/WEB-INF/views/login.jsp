@@ -9,14 +9,43 @@
         <link href="<%=request.getContextPath()%>/ressources/css/login/style.css" rel="stylesheet">
         <script src='http://codepen.io/assets/libs/fullpage/jquery.js'></script>
         <script src="<%=request.getContextPath()%>/ressources/css/login/prefixfree.min.js"></script>
-
+        <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/ressources/css/plugins/notification/notification.css">
+        <script type="text/javascript" charset="utf8" src="<%=request.getContextPath()%>/ressources/js/plugins/Notification/bootstrap-notify.js"></script>
 
         <title>Login</title>
+        <script>
+
+                function notificationInsertUserCorrect()
+                {
+                var notify = $.notify('<strong>Sauvegarde</strong> Ne pas fermer la page ...', {
+                type: 'success',
+                allow_dismiss: false,
+                showProgressbar: true
+                });
+                setTimeout(function() {
+                notify.update('message', '<strong>Sauvegarde</strong> du nouvel utilisateur');
+                }, 1000);
+                setTimeout(function() {
+                notify.update('message', '<strong>Sauvegarde</strong> des nouvelles données');
+                }, 2000);
+                setTimeout(function() {
+                notify.update('message', '<strong>Vérification</strong> des erreurs');
+                }, 3000);
+                setTimeout(function() {
+                notify.update('message', '<strong>Le compte a été crée avec succés !</strong>');
+                }, 4000);
+                }
+
+        </script>
     </head>
 
     <body>
         <div class="body"></div>
         <div class="grad"></div>
+
+        <c:if test="${notif=='userInsert'}">
+            <script type="text/javascript">notificationInsertUserCorrect();</script>
+        </c:if>
 
         <div class="login">
             <form class="form-inline" role="form" name="f" action="<c:url value="/login"/>" method="post">
@@ -41,4 +70,5 @@
 
         </div>
     </body>
+
 </html>

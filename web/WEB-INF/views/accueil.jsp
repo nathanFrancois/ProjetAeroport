@@ -21,9 +21,8 @@
                 </li>
             </ol>
         </div>
-        <div>
-            <span>Un logo tout simple</span>
-        </div>
+
 	</jsp:attribute>
 
 </t:layout>
+

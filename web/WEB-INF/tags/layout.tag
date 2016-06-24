@@ -32,6 +32,9 @@
         <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
         <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>
 
+        <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/ressources/css/plugins/notification/notification.css">
+        <script type="text/javascript" charset="utf8" src="<%=request.getContextPath()%>/ressources/js/plugins/Notification/bootstrap-notify.js"></script>
+
 
         <title>
             <jsp:invoke fragment="headTitle"/>

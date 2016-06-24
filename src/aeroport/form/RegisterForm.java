@@ -69,7 +69,7 @@ public class RegisterForm {
             resultat = "Succès";
 
         } else {
-            resultat = "Votre de demande de compte a échoué";
+            resultat = "Votre demande de compte a échoué";
         }
 
         return apprenant;
@@ -77,7 +77,7 @@ public class RegisterForm {
 
     private void validationPassword(String password) throws Exception {
         if ( password == null || password.length() < 3 ) {
-            throw new Exception( "Le mot de passe doit contenir au moin 5 caractères" );
+            throw new Exception( "Le mot de passe doit contenir au moins 5 caractères" );
         }
     }
 

@@ -37,7 +37,9 @@ public class UserController extends MultiActionController {
         request.setAttribute(ATT_FORM, form);
 
         if(form.getErreurs().isEmpty())
-            return new ModelAndView("redirect:/login");
+        {
+            return new ModelAndView("redirect:/login","notif", "userInsert");
+        }
         else {
             return new ModelAndView("register");
         }
@@ -45,6 +47,7 @@ public class UserController extends MultiActionController {
 
     @RequestMapping(value = "/login")
     public ModelAndView login(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        request.setAttribute("notif",request.getParameter("notif"));
         return new ModelAndView("login");
     }
 
