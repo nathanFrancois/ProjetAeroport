@@ -1,21 +1,27 @@
 package aeroport.metier;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by Nathan on 22/06/2016.
  */
 @Entity
 public class Objectif {
-    private int numobjectif;
-    private Integer nummission;
-    private String libobectif;
 
     @Id
     @Column(name = "NUMOBJECTIF", nullable = false)
+    private int numobjectif;
+
+    @Basic
+    @Column(name = "NUMMISSION", nullable = true)
+    private Integer nummission;
+
+    @Basic
+    @Column(name = "LIBOBECTIF", nullable = true, length = 25)
+    private String libobectif;
+
+
     public int getNumobjectif() {
         return numobjectif;
     }
@@ -24,8 +30,6 @@ public class Objectif {
         this.numobjectif = numobjectif;
     }
 
-    @Basic
-    @Column(name = "NUMMISSION", nullable = true)
     public Integer getNummission() {
         return nummission;
     }
@@ -34,8 +38,6 @@ public class Objectif {
         this.nummission = nummission;
     }
 
-    @Basic
-    @Column(name = "LIBOBECTIF", nullable = true, length = 25)
     public String getLibobectif() {
         return libobectif;
     }

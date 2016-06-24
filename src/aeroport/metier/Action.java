@@ -10,13 +10,24 @@ import javax.persistence.Id;
  */
 @Entity
 public class Action {
-    private int numaction;
-    private Integer actNumaction;
-    private String libaction;
-    private Integer scoremin;
 
     @Id
     @Column(name = "NUMACTION", nullable = false)
+    private int numaction;
+
+    @Basic
+    @Column(name = "ACT_NUMACTION", nullable = true)
+    private Integer actNumaction;
+
+    @Basic
+    @Column(name = "LIBACTION", nullable = true, length = 25)
+    private String libaction;
+
+    @Basic
+    @Column(name = "SCOREMIN", nullable = true)
+    private Integer scoremin;
+
+
     public int getNumaction() {
         return numaction;
     }
@@ -25,8 +36,6 @@ public class Action {
         this.numaction = numaction;
     }
 
-    @Basic
-    @Column(name = "ACT_NUMACTION", nullable = true)
     public Integer getActNumaction() {
         return actNumaction;
     }
@@ -35,8 +44,6 @@ public class Action {
         this.actNumaction = actNumaction;
     }
 
-    @Basic
-    @Column(name = "LIBACTION", nullable = true, length = 25)
     public String getLibaction() {
         return libaction;
     }
@@ -45,8 +52,6 @@ public class Action {
         this.libaction = libaction;
     }
 
-    @Basic
-    @Column(name = "SCOREMIN", nullable = true)
     public Integer getScoremin() {
         return scoremin;
     }

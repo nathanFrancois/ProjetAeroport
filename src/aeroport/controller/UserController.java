@@ -25,6 +25,7 @@ public class UserController extends MultiActionController {
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public ModelAndView register(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
         return new ModelAndView("register");
     }
 

@@ -23,35 +23,48 @@
             </ol>
         </div>
 
-        <div>
+        <div class="row">
             <div class="col-lg-12">
-                <div class="panel panel-green">
+                <!--Timeline -->
+                <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> Area Line Graph Example with Tooltips</h3>
+                        <i class="fa fa-clock-o fa-fw"></i>Mes actions réalisées
                     </div>
-                    <div class="panel-body">
-                        <div id="morris-area-chart"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- /.row -->
 
-        <div>
-            <div class="col-lg-4">
-                <div class="panel panel-yellow">
-                    <div class="panel-heading">
-                        <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> Donut Chart Example</h3>
-                    </div>
                     <div class="panel-body">
-                        <div id="morris-donut-chart"></div>
-                        <div class="text-right">
-                            <a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a>
-                        </div>
+                        <ul class="timeline">
+
+                            <c:forEach items="${requestScope.obtients}" var="hashObtient" varStatus="counter">
+                                <c:choose>
+                                    <c:when test="${counter.index mod 2 == 0 }">
+                                        <c:set var="place" value="" />
+                                    </c:when>
+                                    <c:otherwise>
+                                        <c:set var="place" value="timeline-inverted" />
+                                    </c:otherwise>
+                                </c:choose>
+                                <li class="${place}">
+                                    <div class="timeline-badge">
+
+                                    </div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <h4 class="timeline-title">${hashObtient.value.libaction}</h4>
+                                            <p>
+                                                <small class="text-muted"><i class="fa fa-time"></i>Mission</small>
+                                            </p>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <p>Obtenu le : ${hashObtient.key.datejour}</p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </c:forEach>
+                        </ul>
                     </div>
                 </div>
             </div>
-        </div>
+        <div>
 
 	</jsp:attribute>
 

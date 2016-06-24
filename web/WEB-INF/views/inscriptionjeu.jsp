@@ -29,7 +29,6 @@
                     <div class="form-group">
                         <label>Jeux</label>
                         <select class="form-control" name="listeJeux" id="listeJeux">
-                            <option value="${ inscription.jeu.numjeu }">${ inscription.jeu.libellejeu }</option>
                             <c:forEach items="${ sessionScope.jeux }" var="mapJeux">
                                 <option value="${ mapJeux.value.numjeu }">${ mapJeux.value.libellejeu}</option>
                             </c:forEach>

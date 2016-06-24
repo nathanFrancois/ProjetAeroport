@@ -1,11 +1,10 @@
 package aeroport.controller;
 
 import aeroport.form.InscriptionJeuForm;
-import aeroport.metier.Inscription;
-import aeroport.metier.Jeu;
-import aeroport.service.JeuService;
-import aeroport.service.UserService;
+import aeroport.metier.*;
+import aeroport.service.*;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -65,4 +64,29 @@ public class FormationController extends MultiActionController {
         }
     }
 
+    @RequestMapping(value = "/formations/jeu/{idJeu}")
+    public ModelAndView jeu(HttpServletRequest request, HttpServletResponse response, @PathVariable("idJeu") int idJeu) throws Exception {
+
+        MissionService missionService = new MissionService();
+        ObjectifService objectifService = new ObjectifService();
+        JeuService jeuService = new JeuService();
+        ActionService actionService = new ActionService();
+
+        HashMap<Mission, List<Objectif>> missions = new HashMap<Mission, List<Objectif>>();
+        HashMap<Objectif, List<Action>> actions = new HashMap<Objectif, List<Action>>();
+
+        for (Mission m : missionService.trouverMissionJeu(idJeu)) {
+            List<Objectif> objectifList = objectifService.trouverObjectifsMission(m.getNummission());
+            missions.put(m, objectifList);
+            for (Objectif o : objectifList) {
+                actions.put(o, actionService.trouverActionObjectif(o.getNumobjectif()));
+            }
+        }
+
+        request.setAttribute("missions", missions);
+        request.setAttribute("jeu", jeuService.trouverJeu(idJeu));
+        request.setAttribute("actions", actions);
+
+        return new ModelAndView("jeu");
+    }
 }

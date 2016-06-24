@@ -13,25 +13,23 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-        <link href="<%=request.getContextPath()%>/ressources/css/bootstrap.min.css" rel="stylesheet">
+        <script src="<%=request.getContextPath()%>/ressources/js/jquery.js"></script>
+        <script src="<%=request.getContextPath()%>/ressources/js/bootstrap.min.js"></script>
+        <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>
+        <link href="<%=request.getContextPath()%>/ressources/css/bootstrap.css" rel="stylesheet">
         <link href="<%=request.getContextPath()%>/ressources/css/layout.css" rel="stylesheet">
         <link href="<%=request.getContextPath()%>/ressources/css/sb-admin.css" rel="stylesheet">
         <link href="<%=request.getContextPath()%>/ressources/css/plugins/morris.css" rel="stylesheet">
         <link href="<%=request.getContextPath()%>/ressources/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href="<%=request.getContextPath()%>/ressources/css/plugins/timeline.css" rel="stylesheet" type="text/css">
+
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <script src="<%=request.getContextPath()%>/ressources/js/jquery.js"></script>
-        <script src="<%=request.getContextPath()%>/ressources/js/bootstrap.min.js"></script>
-        <script src="<%=request.getContextPath()%>/ressources/js/plugins/morris/raphael.min.js"></script>
         <script src="<%=request.getContextPath()%>/ressources/js/plugins/morris/morris.min.js"></script>
+        <script src="<%=request.getContextPath()%>/ressources/js/plugins/morris/raphael.min.js"></script>
         <script src="<%=request.getContextPath()%>/ressources/js/plugins/morris/morris-data.js"></script>
-        <script src="<%=request.getContextPath()%>/ressources/js/bootstrap.js"></script>
-        <script src="<%=request.getContextPath()%>/ressources/js/bootstrap.min.js"></script>
-        <script src="<%=request.getContextPath()%>/ressources/js/jquery.js"></script>
         <script src="<%=request.getContextPath()%>/ressources/js/customTable.js"></script>
         <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
-        <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>
-
         <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/ressources/css/plugins/notification/notification.css">
         <script type="text/javascript" charset="utf8" src="<%=request.getContextPath()%>/ressources/js/plugins/Notification/bootstrap-notify.js"></script>
 
