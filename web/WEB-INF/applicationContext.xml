@@ -18,6 +18,7 @@
         <security:intercept-url pattern="/" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')" />
         <security:intercept-url pattern="/formations/**" access="hasRole('ROLE_USER')" />
         <security:intercept-url pattern="/parcours/**" access="hasRole('ROLE_USER')" />
+        <security:intercept-url pattern="/profil" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')" />
 
 
         <security:form-login login-page="/login"
