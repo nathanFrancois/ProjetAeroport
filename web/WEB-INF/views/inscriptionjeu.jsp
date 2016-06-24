@@ -23,7 +23,7 @@
         </div>
 
 
-        <div class="row">
+        <div>
             <div class="col-lg-6 customForm">
                 <form role="form" method="post" action="<c:url value="/formations/inscription"/>">
                     <div class="form-group">

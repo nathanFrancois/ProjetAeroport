@@ -23,7 +23,7 @@
             </ol>
         </div>
 
-        <div class="row">
+        <div>
             <div class="col-lg-12">
                 <div class="panel panel-green">
                     <div class="panel-heading">
@@ -37,7 +37,7 @@
         </div>
         <!-- /.row -->
 
-        <div class="row">
+        <div>
             <div class="col-lg-4">
                 <div class="panel panel-yellow">
                     <div class="panel-heading">

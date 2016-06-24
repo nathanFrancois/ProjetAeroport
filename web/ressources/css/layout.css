@@ -16,16 +16,18 @@
 }
 
 #fond{
-    position: absolute;
+    position: fixed;
     top: 0px;
-    left: -10px;
-    right: -10px;
+    left: 0px;
+    right: 0px;
     bottom: 0px;
-    width: auto;
+    width: 100%;
     height: auto;
-    background-image: url(http://img0.gtsstatic.com/wallpapers/df7d09ed27c7599e80998378d97fa332_large.jpeg);
+    background: url(http://img0.gtsstatic.com/wallpapers/df7d09ed27c7599e80998378d97fa332_large.jpeg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     background-size: cover;
-    z-index: 0;
 }
 
 .customForm {

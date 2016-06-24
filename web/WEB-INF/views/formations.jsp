@@ -22,7 +22,7 @@
             </ol>
         </div>
 
-        <div class="row">
+        <div>
             <div class="col-lg-12">
                 <div class="alert alert-danger">
                     <i class="fa fa-graduation-cap" aria-hidden="true"></i>
@@ -41,7 +41,7 @@
         </div>
 
 
-        <div class="row">
+        <div>
             <c:forEach items="${requestScope.inscriptions}" var="inscription" varStatus="counter">
                 <c:choose>
                     <c:when test="${counter.index mod 3 == 0 }">

@@ -21,7 +21,7 @@
                 </li>
             </ol>
         </div>
-        <div class="row">
+        <div>
             <div class="col-lg-12">
                 <h2>Liste des apprenants</h2>
                 <div class="table-responsive">
