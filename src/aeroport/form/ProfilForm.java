@@ -58,7 +58,7 @@ public class ProfilForm {
             userService.updateUsers(users);
             resultat = "Succès";
         } else {
-            resultat = "Votre de demande de compte a échoué";
+            resultat = "Votre demande de compte a échoué";
         }
     }
 

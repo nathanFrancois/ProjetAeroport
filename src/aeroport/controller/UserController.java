@@ -76,7 +76,7 @@ public class UserController extends MultiActionController {
         profilForm.updateUsers(request);
 
         request.setAttribute(ATT_FORM, profilForm);
-
+        request.setAttribute("notif", "updateUserCorrect");
         UserService userService = new UserService();
         request.setAttribute("user", userService.getCurrentUser());
 

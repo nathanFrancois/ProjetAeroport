@@ -31,7 +31,9 @@
         <script src="<%=request.getContextPath()%>/ressources/js/customTable.js"></script>
         <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
         <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/ressources/css/plugins/notification/notification.css">
+        <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/ressources/css/plugins/notification/Animate.css">
         <script type="text/javascript" charset="utf8" src="<%=request.getContextPath()%>/ressources/js/plugins/Notification/bootstrap-notify.js"></script>
+        <script type="text/javascript" charset="utf8" src="<%=request.getContextPath()%>/ressources/js/plugins/Notification/notificationStyle.js"></script>
 
 
         <title>
@@ -53,7 +55,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="<c:url value="/"> </c:url>">Aeroport de Nice</a>
+                    <a class="navbar-brand" href="<c:url value="/"> </c:url>">Aéroport de Nice</a>
                 </div>
 
                 <!-- Menu haut -->

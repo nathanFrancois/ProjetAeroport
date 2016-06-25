@@ -8,7 +8,7 @@
 
     <bean id="baseaeroport" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <property name="url" value="jdbc:mysql://localhost:3306/baseaeroport" />
+        <property name="url" value="jdbc:mysql://localhost:8889/baseaeroport" />
         <property name="username" value="userepul" />
         <property name="password" value="epul" />
     </bean>
@@ -24,7 +24,7 @@
         <security:form-login login-page="/login"
                              username-parameter="username"
                              password-parameter="password"
-                             authentication-failure-url="/login?failure"/>
+                             authentication-failure-url="/login?failure=true"/>
         <security:csrf/>
     </security:http>
 
