@@ -13,13 +13,16 @@
 	<jsp:attribute name="body">
         <div class="col-lg-12">
             <h1 class="page-header">
-                Profil <small>Vue gloable</small>
+                Profil <small>Vue globale</small>
             </h1>
             <ol class="breadcrumb">
                 <li class="active">
                     Profil / Consultation
                 </li>
             </ol>
+            <c:if test="${notif=='updateUserCorrect'}">
+                <script type="text/javascript">notificationUpdateUserCorrect();</script>
+            </c:if>
             <div>
                 <form class="form-horizontal" role="form" method="post" action="${pageContext.request.contextPath}/profil">
                     <div class="form-group">

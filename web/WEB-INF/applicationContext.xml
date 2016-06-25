@@ -24,7 +24,7 @@
         <security:form-login login-page="/login"
                              username-parameter="username"
                              password-parameter="password"
-                             authentication-failure-url="/login?failure"/>
+                             authentication-failure-url="/login?failure=true"/>
         <security:csrf/>
     </security:http>
 
