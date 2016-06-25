@@ -2,7 +2,6 @@ package aeroport.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import aeroport.metier.Action;
 import aeroport.metier.Obtient;
 import aeroport.metier.Users;
@@ -14,8 +13,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
-
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 

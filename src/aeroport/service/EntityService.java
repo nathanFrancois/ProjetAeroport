@@ -55,6 +55,7 @@ public class EntityService {
 
     public void supprimer(Class classe, int id) {
 
+        startTransaction();
         Object object = entityManager.find(classe, id);
         entityManager.remove(object);
         entityManager.getTransaction().commit();
