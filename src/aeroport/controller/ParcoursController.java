@@ -7,6 +7,7 @@ import aeroport.metier.Action;
 import aeroport.metier.Obtient;
 import aeroport.metier.Users;
 import aeroport.service.ActionService;
+import aeroport.service.EntityService;
 import aeroport.service.ObtientService;
 import aeroport.service.UserService;
 import org.springframework.stereotype.Controller;
@@ -24,11 +25,12 @@ public class ParcoursController extends MultiActionController {
     @RequestMapping(value = "/parcours")
     public ModelAndView parcours(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-        ActionService actionService = new ActionService();
-        UserService userService = new UserService();
+        EntityService entityService = new EntityService();
+        ActionService actionService = new ActionService(entityService);
+        UserService userService = new UserService(entityService);
         Users userCourant = userService.getCurrentUser();
 
-        ObtientService obtientService = new ObtientService();
+        ObtientService obtientService = new ObtientService(entityService);
         List<Obtient> obtientList = obtientService.trouverObtientUser(userCourant.getIdusers());
 
         HashMap<Obtient, Action> obtients = new HashMap<Obtient, Action>();

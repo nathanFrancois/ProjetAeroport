@@ -12,13 +12,13 @@ public class Inscription {
 
     @Id
     @JoinColumn(name = "NUMJEU", referencedColumnName = "NUMJEU")
-    @ManyToOne(targetEntity=Jeu.class, fetch = FetchType.EAGER)
+    @ManyToOne(targetEntity=Jeu.class, fetch = FetchType.LAZY)
     private Jeu jeu;
 
 
     @Id
     @JoinColumn(name = "NUMAPPRENANT", referencedColumnName = "IDUSERS")
-    @ManyToOne(targetEntity=Users.class, fetch = FetchType.EAGER)
+    @ManyToOne(targetEntity=Users.class, fetch = FetchType.LAZY)
     private Users apprenant;
 
     @Basic

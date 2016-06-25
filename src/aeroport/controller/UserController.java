@@ -2,6 +2,7 @@ package aeroport.controller;
 
 import aeroport.form.ProfilForm;
 import aeroport.form.RegisterForm;
+import aeroport.service.EntityService;
 import aeroport.service.UserService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -63,7 +64,8 @@ public class UserController extends MultiActionController {
 
     @RequestMapping(value = "/profil")
     public ModelAndView profil(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        UserService userService = new UserService();
+        EntityService entityService = new EntityService();
+        UserService userService = new UserService(entityService);
 
         request.setAttribute("user", userService.getCurrentUser());
 
@@ -77,7 +79,8 @@ public class UserController extends MultiActionController {
 
         request.setAttribute(ATT_FORM, profilForm);
 
-        UserService userService = new UserService();
+        EntityService entityService = new EntityService();
+        UserService userService = new UserService(entityService);
         request.setAttribute("user", userService.getCurrentUser());
 
         return new ModelAndView("/profil");

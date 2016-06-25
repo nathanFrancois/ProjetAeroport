@@ -26,7 +26,8 @@ public class FormationController extends MultiActionController {
     @RequestMapping(value = "/formations")
     public ModelAndView formations(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-        UserService userService = new UserService();
+        EntityService entityService = new EntityService();
+        UserService userService = new UserService(entityService);
         request.setAttribute("inscriptions", userService.getCurrentUser().getInscriptions());
 
         return new ModelAndView("formations");
@@ -36,7 +37,9 @@ public class FormationController extends MultiActionController {
     @RequestMapping(method = RequestMethod.GET, value = "/formations/inscription")
     public ModelAndView inscription(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession();
-        JeuService jeuService = new JeuService();
+
+        EntityService entityService = new EntityService();
+        JeuService jeuService = new JeuService(entityService);
         List<Jeu> jeuList = jeuService.trouverToutJeu();
         HashMap<String, Jeu> jeux = new HashMap<String, Jeu>();
 
@@ -67,10 +70,11 @@ public class FormationController extends MultiActionController {
     @RequestMapping(value = "/formations/jeu/{idJeu}")
     public ModelAndView jeu(HttpServletRequest request, HttpServletResponse response, @PathVariable("idJeu") int idJeu) throws Exception {
 
-        MissionService missionService = new MissionService();
-        ObjectifService objectifService = new ObjectifService();
-        JeuService jeuService = new JeuService();
-        ActionService actionService = new ActionService();
+        EntityService entityService = new EntityService();
+        MissionService missionService = new MissionService(entityService);
+        ObjectifService objectifService = new ObjectifService(entityService);
+        JeuService jeuService = new JeuService(entityService);
+        ActionService actionService = new ActionService(entityService);
 
         HashMap<Mission, List<Objectif>> missions = new HashMap<Mission, List<Objectif>>();
         HashMap<Objectif, List<Action>> actions = new HashMap<Objectif, List<Action>>();

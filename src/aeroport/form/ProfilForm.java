@@ -2,6 +2,7 @@ package aeroport.form;
 
 
 import aeroport.metier.Users;
+import aeroport.service.EntityService;
 import aeroport.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -54,7 +55,8 @@ public class ProfilForm {
         users.setPassword(password);
 
         if (erreurs.isEmpty()) {
-            UserService userService = new UserService();
+            EntityService entityService = new EntityService();
+            UserService userService = new UserService(entityService);
             userService.updateUsers(users);
             resultat = "Succès";
         } else {

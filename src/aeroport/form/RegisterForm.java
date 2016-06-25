@@ -2,6 +2,7 @@ package aeroport.form;
 
 
 import aeroport.metier.Users;
+import aeroport.service.EntityService;
 import aeroport.service.UserService;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
@@ -63,7 +64,8 @@ public class RegisterForm {
 
         if (erreurs.isEmpty()) {
 
-            UserService userService = new UserService();
+            EntityService entityService = new EntityService();
+            UserService userService = new UserService(entityService);
             userService.ajouterApprenants(apprenant);
 
             resultat = "Succès";
@@ -92,7 +94,8 @@ public class RegisterForm {
             throw new Exception( "le username doit contenir au moins 5 caractères." );
         }
 
-        UserService userService = new UserService();
+        EntityService entityService = new EntityService();
+        UserService userService = new UserService(entityService);
         if (userService.getAllUsername().contains(username)) {
             throw new Exception( "Ce nom d'utilisateur existe déjà" );
         }

@@ -1,6 +1,7 @@
 package aeroport.controller;
 
 import aeroport.metier.Users;
+import aeroport.service.EntityService;
 import aeroport.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,7 +18,8 @@ public class ApprenantController extends MultiActionController {
     @RequestMapping(value = "/apprenants")
     public ModelAndView apprenants(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-        UserService userService = new UserService();
+        EntityService entityService = new EntityService();
+        UserService userService = new UserService(entityService);
         request.setAttribute("apprenants", userService.trouverToutApprenants());
 
         return new ModelAndView("listeApprenants");
@@ -26,7 +28,8 @@ public class ApprenantController extends MultiActionController {
     @RequestMapping(value = "/apprenants/valider/{id}")
     public ModelAndView validerApprenant(HttpServletRequest request, HttpServletResponse response, @PathVariable("id") int id) throws Exception {
 
-        UserService userService = new UserService();
+        EntityService entityService = new EntityService();
+        UserService userService = new UserService(entityService);
         Users users = userService.trouverUsers(id);
         userService.validerCompte(users);
 
@@ -36,7 +39,8 @@ public class ApprenantController extends MultiActionController {
     @RequestMapping(value = "/apprenants/supprimer/{id}")
     public ModelAndView supprimerApprenant(HttpServletRequest request, HttpServletResponse response, @PathVariable("id") int id) throws Exception {
 
-        UserService userService = new UserService();
+        EntityService entityService = new EntityService();
+        UserService userService = new UserService(entityService);
         userService.supprimerApprenant(id);
 
         return new ModelAndView("redirect:/apprenants");

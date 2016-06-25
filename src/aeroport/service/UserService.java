@@ -11,62 +11,62 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class UserService extends EntityService {
+public class UserService {
+
+    private EntityService entityService;
+
+    public UserService(EntityService entityService){
+        this.entityService = entityService;
+    }
 
     public List<Users> trouverToutApprenants() {
 
-        EntityTransaction transaction = startTransaction();
-        transaction.begin();
-        Query query = entityManager.createQuery("SELECT u FROM Users u JOIN u.userRolesList ur WHERE ur.role = :role");
+        EntityTransaction transaction = entityService.startTransaction();
+        Query query = entityService.entityManager.createQuery("SELECT u FROM Users u JOIN u.userRolesList ur WHERE ur.role = :role");
         query.setParameter("role", "ROLE_USER");
         List<Users> listApprenants = (List<Users>) query.getResultList();
-        entityManager.close();
-        entityManagerFactory.close();
 
         return listApprenants;
     }
 
     public Users trouverUsers(int id) {
-        return (Users)trouver(Users.class, id);
+        return (Users)entityService.trouver(Users.class, id);
     }
 
     public Users trouverUsersAvecUsername(String username) {
-        EntityTransaction transaction = startTransaction();
-        transaction.begin();
-        Query query = entityManager.createQuery("SELECT u FROM Users u WHERE u.username = :username");
+
+        entityService.startTransaction();
+        Query query = entityService.entityManager.createQuery("SELECT u FROM Users u WHERE u.username = :username");
         query.setParameter("username", username);
         Users users = (Users) query.getSingleResult();
-        entityManager.close();
-        entityManagerFactory.close();
 
         return users;
     }
 
     public void ajouterApprenants(Users users) {
+
         UserRoles userRoles = new UserRoles();
         userRoles.setRole("ROLE_USER");
         userRoles.setUsers(users);
         users.addUserRoles(userRoles);
         users.setEnabled(new Byte("0"));
-        inserer(users);
+        entityService.inserer(users);
     }
 
     public void validerCompte(Users users) {
-        EntityTransaction transaction = startTransaction();
-        transaction.begin();
+        EntityTransaction transaction = entityService.startTransaction();
         users.setEnabled(new Byte("1"));
-        entityManager.merge(users);
-        entityManager.flush();
+        entityService.entityManager.merge(users);
+        entityService.entityManager.flush();
         transaction.commit();
-        entityManager.close();
     }
 
     public void supprimerApprenant(int id) {
-        supprimer(Users.class, id);
+        entityService.supprimer(Users.class, id);
     }
 
     public List<String> getAllUsername() {
-        List<Users> usersList= (List<Users>) trouverTout("Users");
+        List<Users> usersList= (List<Users>) entityService.trouverTout("Users");
         List<String> listUsername = new ArrayList<String>();
 
         for (Users u : usersList) {
@@ -82,15 +82,13 @@ public class UserService extends EntityService {
 
     public void updateUsers(Users users) {
         Users currentUsers = getCurrentUser();
-        EntityTransaction transaction = startTransaction();
-        transaction.begin();
+        EntityTransaction transaction = entityService.startTransaction();
         currentUsers.setNomusers(users.getNomusers());
         currentUsers.setPrenomusers(users.getPrenomusers());
         currentUsers.setPassword(users.getPassword());
-        entityManager.merge(currentUsers);
-        entityManager.flush();
+        entityService.entityManager.merge(currentUsers);
+        entityService.entityManager.flush();
         transaction.commit();
-        entityManager.close();
     }
 }
 

@@ -3,6 +3,7 @@ package aeroport.form;
 import aeroport.metier.Inscription;
 import aeroport.metier.Jeu;
 import aeroport.metier.Users;
+import aeroport.service.EntityService;
 import aeroport.service.InscriptionService;
 import aeroport.service.JeuService;
 import aeroport.service.UserService;
@@ -31,9 +32,11 @@ public class InscriptionJeuForm {
 
     public Inscription ajouterInscription(HttpServletRequest request) {
 
+        EntityService entityService = new EntityService();
+
         Inscription inscription = new Inscription();
 
-        UserService userService = new UserService();
+        UserService userService = new UserService(entityService);
         Users users = userService.getCurrentUser();
         inscription.setApprenant(users);
 
@@ -50,7 +53,7 @@ public class InscriptionJeuForm {
         inscription.setDateInscription(sqlDateDuJour);
 
         if (erreurs.isEmpty()) {
-            InscriptionService inscriptionService = new InscriptionService();
+            InscriptionService inscriptionService = new InscriptionService(entityService);
 
             try {
                 inscriptionService.insererInscription(inscription);
@@ -86,7 +89,8 @@ public class InscriptionJeuForm {
             throw new Exception( "Entrez un jeu");
 
         int id = Integer.parseInt(idJeu);
-        JeuService jeuService = new JeuService();
+        EntityService entityService = new EntityService();
+        JeuService jeuService = new JeuService(entityService);
         Jeu jeu = jeuService.trouverJeu(id);
 
         if(jeu == null)

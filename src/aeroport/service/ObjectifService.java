@@ -10,22 +10,25 @@ import java.util.List;
 /**
  * Created by Nathan on 24/06/2016.
  */
-public class ObjectifService extends EntityService {
+public class ObjectifService {
 
-    public Objectif trouverObjectif(int numObjectif)
-    {
-        return (Objectif) trouver(Objectif.class, numObjectif);
+    private EntityService entityService;
+
+    public ObjectifService(EntityService entityService){
+        this.entityService = entityService;
     }
 
-    public List<Objectif> trouverObjectifsMission(int numMission)
-    {
-        EntityTransaction transaction = startTransaction();
-        transaction.begin();
-        Query query = entityManager.createQuery("SELECT f FROM Fixe f WHERE f.nummission = :numMission");
+    public Objectif trouverObjectif(int numObjectif) {
+
+        return (Objectif) entityService.trouver(Objectif.class, numObjectif);
+    }
+
+    public List<Objectif> trouverObjectifsMission(int numMission) {
+
+        entityService.startTransaction();
+        Query query = entityService.entityManager.createQuery("SELECT f FROM Fixe f WHERE f.nummission = :numMission");
         query.setParameter("numMission", numMission);
         List<Fixe> fixeList = (List<Fixe>) query.getResultList();
-        entityManager.close();
-        entityManagerFactory.close();
 
         List<Objectif> objectifList = new ArrayList<Objectif>();
         for (Fixe f : fixeList) {
