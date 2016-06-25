@@ -37,6 +37,7 @@ public class EntityService {
 
     public List trouverTout(String tableName){
 
+
         EntityTransaction transaction = startTransaction();
         String query = "SELECT x FROM ".concat(tableName).concat(" x");
         List listObject = entityManager.createQuery(query).getResultList();
