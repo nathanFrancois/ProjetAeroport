@@ -2,6 +2,7 @@ package aeroport.service;
 
 import aeroport.metier.Jeu;
 
+import javax.persistence.Query;
 import java.util.List;
 
 /**
@@ -24,4 +25,15 @@ public class JeuService {
         return jeuList;
     }
 
+    public void insererJeu(Jeu jeu) {
+        entityService.inserer(jeu);
+    }
+
+    public Jeu trouverJeuLib(String libellejeu) {
+        entityService.startTransaction();
+        Query query = entityService.entityManager.createQuery("SELECT j FROM Jeu j WHERE j.libellejeu = :libelleJeu");
+        query.setParameter("libelleJeu", libellejeu);
+
+        return (Jeu) query.getSingleResult();
+    }
 }

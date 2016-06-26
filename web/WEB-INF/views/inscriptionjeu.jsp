@@ -45,8 +45,6 @@
             </div>
         </div>
 
-
-
 	</jsp:attribute>
 
 </t:layout>

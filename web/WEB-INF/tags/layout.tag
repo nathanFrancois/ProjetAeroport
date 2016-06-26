@@ -13,9 +13,9 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
+
         <script src="<%=request.getContextPath()%>/ressources/js/jquery.js"></script>
         <script src="<%=request.getContextPath()%>/ressources/js/bootstrap.min.js"></script>
-        <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>
         <link href="<%=request.getContextPath()%>/ressources/css/bootstrap.css" rel="stylesheet">
         <link href="<%=request.getContextPath()%>/ressources/css/layout.css" rel="stylesheet">
         <link href="<%=request.getContextPath()%>/ressources/css/sb-admin.css" rel="stylesheet">
@@ -23,17 +23,24 @@
         <link href="<%=request.getContextPath()%>/ressources/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link href="<%=request.getContextPath()%>/ressources/css/plugins/timeline.css" rel="stylesheet" type="text/css">
 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
+
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <script src="<%=request.getContextPath()%>/ressources/js/plugins/morris/morris.min.js"></script>
         <script src="<%=request.getContextPath()%>/ressources/js/plugins/morris/raphael.min.js"></script>
         <script src="<%=request.getContextPath()%>/ressources/js/plugins/morris/morris-data.js"></script>
-        <script src="<%=request.getContextPath()%>/ressources/js/customTable.js"></script>
-        <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
+
         <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/ressources/css/plugins/notification/notification.css">
         <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/ressources/css/plugins/notification/Animate.css">
         <script type="text/javascript" charset="utf8" src="<%=request.getContextPath()%>/ressources/js/plugins/Notification/bootstrap-notify.js"></script>
         <script type="text/javascript" charset="utf8" src="<%=request.getContextPath()%>/ressources/js/plugins/Notification/notificationStyle.js"></script>
+
+
+        <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+        <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="<%=request.getContextPath()%>/ressources/js/customTable.js"></script>
 
 
         <title>
@@ -84,7 +91,10 @@
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav side-nav">
                     <security:authorize access="hasRole('ROLE_USER')">
-                        <li class="active">
+                        <li>
+                            <a href="<c:url value="/"> </c:url>"><i class="fa fa-home" aria-hidden="true"></i> Accueil</a>
+                        </li>
+                        <li>
                             <a href="<c:url value="/formations"> </c:url>"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Formations</a>
                         </li>
                         <li class="">
@@ -94,6 +104,18 @@
                     <security:authorize access="hasRole('ROLE_ADMIN')">
                         <li class="">
                             <a href="<c:url value="/apprenants"> </c:url>"><i class="fa fa-user"></i> Apprenants</a>
+                        </li>
+                        <li class="">
+                            <a href="<c:url value="/action"> </c:url>"><i class="fa fa-trello" aria-hidden="true"></i> Action</a>
+                        </li>
+                        <li class="">
+                            <a href="<c:url value="/objectif"> </c:url>"><i class="fa fa-bullseye" aria-hidden="true"></i> Objectif</a>
+                        </li>
+                        <li class="">
+                            <a href="<c:url value="/mission"> </c:url>"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>  Mission</a>
+                        </li>
+                        <li class="">
+                            <a href="<c:url value="/jeu"> </c:url>"><i class="fa fa-dribbble" aria-hidden="true"></i> Jeu</a>
                         </li>
                     </security:authorize>
                     </ul>

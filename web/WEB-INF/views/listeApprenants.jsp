@@ -57,6 +57,36 @@
                 </div>
             </div>
         </div>
+
+        <table id="test" class="table table-hover">
+            <thead>
+            <tr>
+                <th>Prenom</th>
+                <th>Nom</th>
+                <th>Username</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <c:forEach items="${requestScope.apprenants}" var="apprenant">
+                <tr>
+                    <td>${apprenant.prenomusers}</td>
+                    <td>${apprenant.nomusers}</td>
+                    <td>${apprenant.username}</td>
+                    <td>
+                        <c:if test="${!apprenant.enabled}">
+                            <a href="<c:url value="/apprenants/valider/${apprenant.idusers}">/></c:url>">
+                                <i class="fa fa-check" aria-hidden="true"></i>
+                            </a>
+                        </c:if>
+                        <a href="<c:url value="/apprenants/supprimer/${apprenant.idusers}">/></c:url>">
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                        </a>
+                    </td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
 	</jsp:attribute>
 
 </t:layout>

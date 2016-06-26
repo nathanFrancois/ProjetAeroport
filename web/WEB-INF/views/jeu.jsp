@@ -39,17 +39,29 @@
                                     <div class="modal-dialog modal-sm">
                                         <div class="modal-content">
 
+                                            <h2 class="title">Liste des actions</h2>
+                                            <ul class="list-group">
                                             <c:forEach items="${actions}" var="mapAction" varStatus="counter">
 
                                                 <c:if test="${objectif.numobjectif == mapAction.key.numobjectif}">
 
                                                     <c:forEach items="${mapAction.value}" var="action" varStatus="counter">
-                                                        ${action.libaction} <br>
+
+                                                        <c:choose>
+                                                            <c:when test="${counter.index mod 2 == 0 }">
+                                                                <c:set var="sigle" value="fa-times" />
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                                <c:set var="sigle" value="fa-check" />
+                                                            </c:otherwise>
+                                                        </c:choose>
+                                                        <li class="list-group-item">${action.libaction} <i class="fa ${sigle}" aria-hidden="true"></i></li>
                                                     </c:forEach>
 
                                                 </c:if>
 
                                             </c:forEach>
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>

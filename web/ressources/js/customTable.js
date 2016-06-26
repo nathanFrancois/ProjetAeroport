@@ -1,9 +1,3 @@
-$(document).ready(function() {
-    $('#tabProjet').DataTable(
-        {
-            bFilter: false,
-            bInfo: false,
-            dom: 'rt'
-        }
-    );
-} );
+$(document).ready(function(){
+    $('#test').DataTable();
+});

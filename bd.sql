@@ -37,7 +37,7 @@ drop table if exists REGLE;
 /*==============================================================*/
 create table ACTION
 (
-   NUMACTION            int not null,
+   NUMACTION            int not null AUTO_INCREMENT,
    ACT_NUMACTION        int,
    LIBACTION            char(25),
    SCOREMIN             int,
@@ -137,7 +137,7 @@ create table JEU
 /*==============================================================*/
 create table MISSION
 (
-   NUMMISSION           int not null,
+   NUMMISSION           int not null AUTO_INCREMENT,
    LIBMISSION           char(25),
    primary key (NUMMISSION)
 );
@@ -147,7 +147,7 @@ create table MISSION
 /*==============================================================*/
 create table OBJECTIF
 (
-   NUMOBJECTIF          int not null,
+   NUMOBJECTIF          int not null AUTO_INCREMENT,
    NUMMISSION           int,
    LIBOBECTIF           char(25),
    primary key (NUMOBJECTIF)
@@ -181,7 +181,7 @@ create table POSSEDE
 /*==============================================================*/
 create table REGLE
 (
-   NUMREGLE             int not null,
+   NUMREGLE             int not null AUTO_INCREMENT,
    LIBREGLE             char(25),
    SCOREMIN             int,
    primary key (NUMREGLE)

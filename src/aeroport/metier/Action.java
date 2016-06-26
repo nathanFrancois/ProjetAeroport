@@ -1,9 +1,7 @@
 package aeroport.metier;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by Nathan on 22/06/2016.
@@ -13,11 +11,12 @@ public class Action {
 
     @Id
     @Column(name = "NUMACTION", nullable = false)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private int numaction;
 
-    @Basic
-    @Column(name = "ACT_NUMACTION", nullable = true)
-    private Integer actNumaction;
+    @JoinColumn(name = "ACT_NUMACTION", referencedColumnName = "NUMACTION")
+    @ManyToOne(targetEntity=Action.class, fetch = FetchType.EAGER)
+    private Action action;
 
     @Basic
     @Column(name = "LIBACTION", nullable = true, length = 25)
@@ -27,6 +26,16 @@ public class Action {
     @Column(name = "SCOREMIN", nullable = true)
     private Integer scoremin;
 
+    @OneToMany(mappedBy="action")
+    private List<Action> precActions;
+
+    public List<Action> getPrecActions() {
+        return precActions;
+    }
+
+    public void setPrecActions(List<Action> precActions) {
+        this.precActions = precActions;
+    }
 
     public int getNumaction() {
         return numaction;
@@ -36,12 +45,12 @@ public class Action {
         this.numaction = numaction;
     }
 
-    public Integer getActNumaction() {
-        return actNumaction;
+    public Action getAction() {
+        return action;
     }
 
-    public void setActNumaction(Integer actNumaction) {
-        this.actNumaction = actNumaction;
+    public void setAction(Action action) {
+        this.action = action;
     }
 
     public String getLibaction() {
@@ -65,21 +74,19 @@ public class Action {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Action action = (Action) o;
+        Action action1 = (Action) o;
 
-        if (numaction != action.numaction) return false;
-        if (actNumaction != null ? !actNumaction.equals(action.actNumaction) : action.actNumaction != null)
-            return false;
-        if (libaction != null ? !libaction.equals(action.libaction) : action.libaction != null) return false;
-        if (scoremin != null ? !scoremin.equals(action.scoremin) : action.scoremin != null) return false;
+        if (numaction != action1.numaction) return false;
+        if (action != null ? !action.equals(action1.action) : action1.action != null) return false;
+        if (libaction != null ? !libaction.equals(action1.libaction) : action1.libaction != null) return false;
+        return scoremin != null ? scoremin.equals(action1.scoremin) : action1.scoremin == null;
 
-        return true;
     }
 
     @Override
     public int hashCode() {
         int result = numaction;
-        result = 31 * result + (actNumaction != null ? actNumaction.hashCode() : 0);
+        result = 31 * result + (action != null ? action.hashCode() : 0);
         result = 31 * result + (libaction != null ? libaction.hashCode() : 0);
         result = 31 * result + (scoremin != null ? scoremin.hashCode() : 0);
         return result;

@@ -104,10 +104,10 @@ INSERT INTO `CALENDRIER` (`DATEJOUR`) VALUES
 -- Contenu de la table `OBTIENT`
 --
 INSERT INTO `OBTIENT` (`IDUSERS`, `DATEJOUR`, `NUMACTION`, `VALEURDEBUT`, `VALEURFIN`) VALUES
-  (1, '2016-06-18 10:34:09', 3, 12, 15),
-  (1, '2016-06-19 10:34:09', 4, 8, 11),
-  (3, '2016-06-20 10:34:09', 3, 12, 15),
-  (3, '2016-06-21 10:34:09', 4, 18, 20);
+  (2, '2016-06-18 10:34:09', 3, 12, 15),
+  (2, '2016-06-19 10:34:09', 4, 8, 11),
+  (2, '2016-06-20 10:34:09', 5, 12, 15),
+  (2, '2016-06-21 10:34:09', 6, 18, 20);
   
 --
 -- Contenu de la table `EST_ASSOCIE`

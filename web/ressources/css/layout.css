@@ -15,6 +15,16 @@
     min-height: 90vh;
 }
 
+#tabProjet thead{
+    background-color: grey;
+    opacity: 0.8;
+}
+
+#tabProjet tbody{
+    background-color: white;
+    opacity: 0.8;
+}
+
 #fond{
     position: fixed;
     top: 0px;

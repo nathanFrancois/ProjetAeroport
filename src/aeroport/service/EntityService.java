@@ -12,11 +12,9 @@ public class EntityService {
 
     public EntityTransaction startTransaction(){
 
-        if(entityManagerFactory == null)
-        {
+        if(entityManagerFactory == null) {
             entityManagerFactory = Persistence.createEntityManagerFactory("PAeroport");
-            if(entityManager == null)
-            {
+            if(entityManager == null) {
                 entityManager = entityManagerFactory.createEntityManager();
                 entityManager.getTransaction().begin();
             }
@@ -37,7 +35,6 @@ public class EntityService {
 
     public List trouverTout(String tableName){
 
-
         EntityTransaction transaction = startTransaction();
         String query = "SELECT x FROM ".concat(tableName).concat(" x");
         List listObject = entityManager.createQuery(query).getResultList();
@@ -46,6 +43,7 @@ public class EntityService {
     }
 
     public Object trouver(Class classe, int id) {
+
         Object object = null;
         startTransaction();
         object = entityManager.find(classe, id);

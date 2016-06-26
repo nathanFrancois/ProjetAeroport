@@ -24,6 +24,7 @@ public class ActionService {
     }
 
     public List<Action> trouverActionObjectif(int numobjectif) {
+
         entityService.startTransaction();
         Query query = entityService.entityManager.createQuery("SELECT a FROM EstAssocie a WHERE a.numobjectif = :numObjectif");
         query.setParameter("numObjectif", numobjectif);
@@ -34,5 +35,14 @@ public class ActionService {
         }
 
         return actionList;
+    }
+
+    public void insererAction(Action action) {
+
+        entityService.inserer(action);
+    }
+
+    public List<Action> trouverToutAction() {
+        return (List<Action>) entityService.trouverTout("Action");
     }
 }

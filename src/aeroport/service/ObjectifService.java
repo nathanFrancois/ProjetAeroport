@@ -23,6 +23,15 @@ public class ObjectifService {
         return (Objectif) entityService.trouver(Objectif.class, numObjectif);
     }
 
+    public Objectif trouverObjectifLib(String libObjectif) {
+
+        entityService.startTransaction();
+        Query query = entityService.entityManager.createQuery("SELECT o FROM Objectif o WHERE o.libobectif = :libobjectif");
+        query.setParameter("libobjectif", libObjectif);
+
+        return (Objectif) query.getSingleResult();
+    }
+
     public List<Objectif> trouverObjectifsMission(int numMission) {
 
         entityService.startTransaction();
@@ -36,5 +45,14 @@ public class ObjectifService {
         }
 
         return objectifList;
+    }
+
+    public List<Objectif> trouverToutObjectif() {
+
+        return (List<Objectif> ) entityService.trouverTout("Objectif");
+    }
+
+    public void insererObjectif(Objectif objectif){
+        entityService.inserer(objectif);
     }
 }

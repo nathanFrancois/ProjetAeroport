@@ -1,9 +1,6 @@
 package aeroport.service;
 
-import aeroport.metier.Comprend;
-import aeroport.metier.Jeu;
-import aeroport.metier.Mission;
-import aeroport.metier.Users;
+import aeroport.metier.*;
 
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
@@ -40,5 +37,22 @@ public class MissionService {
         }
 
         return missionList;
+    }
+
+    public List<Mission> trouverToutMission() {
+
+        return (List<Mission> ) entityService.trouverTout("Mission");
+    }
+
+    public void insererMission(Mission mission){
+        entityService.inserer(mission);
+    }
+
+    public Mission trouverMissionLib(String libMission) {
+        entityService.startTransaction();
+        Query query = entityService.entityManager.createQuery("SELECT m FROM Mission m WHERE m.libmission = :libmission");
+        query.setParameter("libmission", libMission);
+
+        return (Mission) query.getSingleResult();
     }
 }
